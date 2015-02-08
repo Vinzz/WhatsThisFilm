@@ -11,7 +11,14 @@ namespace WhatsThisFilm
     /// </summary>
     public class FilmInfo
     {
+        /// <summary>
+        /// Name of the file
+        /// </summary>
         public string Key { get; set; }
+        
+        /// <summary>
+        /// Cleaned up title
+        /// </summary>
         public string HexedTitle { get; set; }
         public string titre { get; set; }
         public string orig_titre { get; set; }
