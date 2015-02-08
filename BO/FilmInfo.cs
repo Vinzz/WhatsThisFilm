@@ -6,6 +6,9 @@ using System.Xml.Serialization;
 
 namespace WhatsThisFilm
 {
+    /// <summary>
+    /// Class used to store film informations
+    /// </summary>
     public class FilmInfo
     {
         public string Key { get; set; }
