@@ -49,7 +49,12 @@ namespace WhatsThisFilm
 
         void ListeFilms_KeyDown(object sender, KeyEventArgs e)
         {
-            Console.WriteLine("Key " + e.KeyCode);
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    btnWatchMovie_Click(this, null);
+                    break;
+            }
         }
 
         void ListeFilms_MouseWheel(object sender, MouseEventArgs e)
