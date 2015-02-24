@@ -97,7 +97,7 @@ namespace WhatsThisFilm
             this.Cursor = Cursors.WaitCursor;
 
             FilmInfo finfo;
-            if (_cache.containsFilmInfo(ListeFilms.SelectedItem.ToString()))
+            if (_cache.doesnotContainsFilmInfo(ListeFilms.SelectedItem.ToString()))
             {
                 lblIndex.Text = currIndex.ToString();
 
@@ -170,6 +170,11 @@ namespace WhatsThisFilm
             lblGenres.Text = "-";
             lblTotal.Text = "0";
             lblPresse.Text = "-";
+
+            if(!_cache.doesnotContainsFilmInfo(ListeFilms.SelectedItem.ToString()))
+            {
+                _cache.ResetFilmInfo(ListeFilms.SelectedItem.ToString());
+            }
         }
 
         private bool IsOK(FilmInfo finfo)
@@ -262,7 +267,7 @@ namespace WhatsThisFilm
             }
             else
             {
-                if (_cache.containsFilmInfo(ListeFilms.Items[e.Index].ToString()))
+                if (_cache.doesnotContainsFilmInfo(ListeFilms.Items[e.Index].ToString()))
                 {
                     e.Graphics.DrawString(ListeFilms.Items[e.Index].ToString(),
                                                e.Font, Brushes.Gray, e.Bounds,

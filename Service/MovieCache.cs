@@ -126,10 +126,19 @@ namespace WhatsThisFilm.Service
             }
         }
 
-        internal bool containsFilmInfo(string p)
+        internal bool doesnotContainsFilmInfo(string p)
         {
-            return (_memory.ContainsKey(p) == false) || _memory[p] == null;
+            if((_memory.ContainsKey(p) == false) || _memory[p] == null)
+            {
+                return true;
+            }
  
+            if(_memory[p].titre == "-")
+            {
+                return true;
+            }
+
+            return false;
         }
 
         internal FilmInfo GetInfo(string p)
