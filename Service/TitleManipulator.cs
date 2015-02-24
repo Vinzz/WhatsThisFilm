@@ -12,6 +12,8 @@ namespace WhatsThisFilm
         private static Regex statMovReg = new Regex(@"DVD.*" + "|" +
                                         @"AVI.*" + "|" +
                                         @"ogm.*" + "|" +
+                                        @"x264.*" + "|" +
+                                        @"sd.*" + "|" +
                                         @"www.*" + "|" +
                                         @"vf.*" + "|" +
                                         @"vvf.*" + "|" +
