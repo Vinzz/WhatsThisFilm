@@ -24,6 +24,7 @@ namespace WhatsThisFilm
                                         @"ogg.*" + "|" +
                                         @"mkv.*" + "|" +
                                         @"Limite.*" + "|" +
+                                        @"libertyland.*" + "|" +
                                         @"film.*" + "|" +
                                         @"movie.*" + "|" +
                                         @"cd[0-9].*" + "|" +
