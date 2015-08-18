@@ -130,7 +130,7 @@ namespace WhatsThisFilm
                 currIndex = 0;
 
                 lblIndex.Text = currIndex.ToString();
-                finfo = _cache.GetInfo(ListeFilms.SelectedItem.ToString()); 
+                finfo = _cache.GetInfo(ListeFilms.SelectedItem.ToString());
             }
             if (finfo != null)
             {
@@ -151,7 +151,7 @@ namespace WhatsThisFilm
             }
 
             _cache.SetInfo(ListeFilms.SelectedItem.ToString(), finfo);
-           
+
 
             this.Cursor = Cursors.Arrow;
             return 1;
@@ -171,7 +171,7 @@ namespace WhatsThisFilm
             lblTotal.Text = "0";
             lblPresse.Text = "-";
 
-            if(!_cache.doesnotContainsFilmInfo(ListeFilms.SelectedItem.ToString()))
+            if (!_cache.doesnotContainsFilmInfo(ListeFilms.SelectedItem.ToString()))
             {
                 _cache.ResetFilmInfo(ListeFilms.SelectedItem.ToString());
             }
@@ -190,7 +190,7 @@ namespace WhatsThisFilm
             if (currIndex < 2)
                 btnPrev.Enabled = false;
             _cache.SetInfo(ListeFilms.SelectedItem.ToString(), null);
-   
+
             GetFilmInfos(false);
         }
 
@@ -216,7 +216,7 @@ namespace WhatsThisFilm
 
         private void btnWatchMovie_Click(object sender, EventArgs e)
         {
-            Process.Start( _cache.GetFullPath(ListeFilms.SelectedItem.ToString()));
+            Process.Start(_cache.GetFullPath(ListeFilms.SelectedItem.ToString()));
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -258,28 +258,31 @@ namespace WhatsThisFilm
 
             e.DrawBackground();
 
-            if (e.Index == li.SelectedIndex)
+            if (e.Index != -1)
             {
-                e.DrawFocusRectangle();
-                e.Graphics.DrawString(ListeFilms.Items[e.Index].ToString(),
-                                          e.Font, Brushes.White, e.Bounds,
-                                          StringFormat.GenericDefault);
-            }
-            else
-            {
-                if (_cache.doesnotContainsFilmInfo(ListeFilms.Items[e.Index].ToString()))
+                if (e.Index == li.SelectedIndex)
                 {
+                    e.DrawFocusRectangle();
                     e.Graphics.DrawString(ListeFilms.Items[e.Index].ToString(),
-                                               e.Font, Brushes.Gray, e.Bounds,
-                                               StringFormat.GenericDefault);
-
-
+                                              e.Font, Brushes.White, e.Bounds,
+                                              StringFormat.GenericDefault);
                 }
                 else
                 {
-                    e.Graphics.DrawString(ListeFilms.Items[e.Index].ToString(),
-                                               e.Font, Brushes.Black, e.Bounds,
-                                               StringFormat.GenericDefault);
+                    if (_cache.doesnotContainsFilmInfo(ListeFilms.Items[e.Index].ToString()))
+                    {
+                        e.Graphics.DrawString(ListeFilms.Items[e.Index].ToString(),
+                                                   e.Font, Brushes.Gray, e.Bounds,
+                                                   StringFormat.GenericDefault);
+
+
+                    }
+                    else
+                    {
+                        e.Graphics.DrawString(ListeFilms.Items[e.Index].ToString(),
+                                                   e.Font, Brushes.Black, e.Bounds,
+                                                   StringFormat.GenericDefault);
+                    }
                 }
             }
         }
