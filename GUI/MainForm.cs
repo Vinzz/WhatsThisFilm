@@ -33,6 +33,7 @@ namespace WhatsThisFilm
                     ListeFilms.MouseWheel += new MouseEventHandler(ListeFilms_MouseWheel);
                     ListeFilms.KeyDown += new KeyEventHandler(ListeFilms_KeyDown);
 
+                    refreshComboList();
                     RefreshList();
                 }
                 else
@@ -72,14 +73,23 @@ namespace WhatsThisFilm
             ee.Handled = false;
         }
 
-
+        private void refreshComboList()
+        {
+            directoryDDList.DataSource = null;
+            directoryDDList.DataSource = _cache.searchPathList;
+        }
 
         private void RefreshList()
         {
-            lblSrc.Text = _cache.searchPath;
-
             txtFiltre.Text = "";
-            ListeFilms.DataSource = _cache.RefreshDataSource();
+
+            int currDirIndex = 0;
+
+            if (directoryDDList.SelectedIndex != -1)
+                currDirIndex = directoryDDList.SelectedIndex;
+
+            ListeFilms.DataSource = null;
+            ListeFilms.DataSource = _cache.RefreshDataSource(currDirIndex);
         }
 
         private void ListeFilms_SelectedIndexChanged(object sender, EventArgs e)
@@ -96,42 +106,46 @@ namespace WhatsThisFilm
         {
             this.Cursor = Cursors.WaitCursor;
 
-            FilmInfo finfo;
-            if (_cache.doesnotContainsFilmInfo(ListeFilms.SelectedItem.ToString()))
+            FilmInfo finfo = null;
+            if (ListeFilms.SelectedIndex != -1)
             {
-                lblIndex.Text = currIndex.ToString();
-
-                finfo = AlloClient.GetFromTitle(ListeFilms.SelectedItem.ToString(), currIndex);
-
-                if (finfo != null)
+                if (_cache.doesnotContainsFilmInfo(ListeFilms.SelectedItem.ToString()))
                 {
-                    maxIndex = finfo.totalInSearch;
+                    lblIndex.Text = currIndex.ToString();
 
-                    if (bIsAuto)
+                    finfo = AlloClient.GetFromTitle(ListeFilms.SelectedItem.ToString(), currIndex);
+
+                    if (finfo != null)
                     {
-                        if ((finfo.titre != null) && maxIndex > 1)
+                        maxIndex = finfo.totalInSearch;
+
+                        if (bIsAuto)
                         {
-                            //Stop if the film is ok with the file title
-                            if (!IsOK(finfo))
+                            if ((finfo.titre != null) && maxIndex > 1)
                             {
-                                if (currIndex != maxIndex)
+                                //Stop if the film is ok with the file title
+                                if (!IsOK(finfo))
                                 {
-                                    ++currIndex;
-                                    btnPrev.Enabled = true;
-                                    return GetFilmInfos(true);
+                                    if (currIndex != maxIndex)
+                                    {
+                                        ++currIndex;
+                                        btnPrev.Enabled = true;
+                                        return GetFilmInfos(true);
+                                    }
                                 }
                             }
                         }
                     }
                 }
-            }
-            else
-            {
-                currIndex = 0;
+                else
+                {
+                    currIndex = 0;
 
-                lblIndex.Text = currIndex.ToString();
-                finfo = _cache.GetInfo(ListeFilms.SelectedItem.ToString());
+                    lblIndex.Text = currIndex.ToString();
+                    finfo = _cache.GetInfo(ListeFilms.SelectedItem.ToString());
+                }
             }
+
             if (finfo != null)
             {
                 pictureBox1.Image = finfo.jaquette;
@@ -150,7 +164,8 @@ namespace WhatsThisFilm
                 SnipFiche();
             }
 
-            _cache.SetInfo(ListeFilms.SelectedItem.ToString(), finfo);
+            if (ListeFilms.SelectedIndex != -1)
+                _cache.SetInfo(ListeFilms.SelectedItem.ToString(), finfo);
 
 
             this.Cursor = Cursors.Arrow;
@@ -161,7 +176,16 @@ namespace WhatsThisFilm
         {
             pictureBox1.Image = null;
             lblYear.Text = "----";
-            lblTitle.Text = "---- (" + TitleManipulator.HexIt(ListeFilms.SelectedItem.ToString()) + ")";
+
+            if (ListeFilms.SelectedIndex != -1)
+            {
+                lblTitle.Text = "---- (" + TitleManipulator.HexIt(ListeFilms.SelectedItem.ToString()) + ")";
+            }
+            else
+            {
+                lblTitle.Text = "----";
+            }
+
             lblDirector.Text = "-";
             lblResume.Text = "-";
             lblDuree.Text = "-";
@@ -171,9 +195,12 @@ namespace WhatsThisFilm
             lblTotal.Text = "0";
             lblPresse.Text = "-";
 
-            if (!_cache.doesnotContainsFilmInfo(ListeFilms.SelectedItem.ToString()))
+            if (ListeFilms.SelectedIndex != -1)
             {
-                _cache.ResetFilmInfo(ListeFilms.SelectedItem.ToString());
+                if (!_cache.doesnotContainsFilmInfo(ListeFilms.SelectedItem.ToString()))
+                {
+                    _cache.ResetFilmInfo(ListeFilms.SelectedItem.ToString());
+                }
             }
         }
 
@@ -225,14 +252,10 @@ namespace WhatsThisFilm
 
             fb.Description = "Veuillez sélectionner un répertoire local ou réseau contenant des films";
 
-
-            if (Directory.Exists(_cache.searchPath))
-                fb.SelectedPath = _cache.searchPath;
-
             if (fb.ShowDialog() == DialogResult.OK)
             {
-                _cache.searchPath = fb.SelectedPath;
-                RefreshList();
+                _cache.searchPathList.Add(fb.SelectedPath);
+                refreshComboList();
             }
         }
 
@@ -317,6 +340,17 @@ namespace WhatsThisFilm
             _cache.ResetFilmInfo(ListeFilms.SelectedItem.ToString());
 
             SnipFiche();
+        }
+
+        private void directoryDDList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshList();
+        }
+
+        private void btnSnipDir_Click(object sender, EventArgs e)
+        {
+            _cache.SnipFromDataSource(directoryDDList.SelectedIndex);
+            refreshComboList();
         }
     }
 }

@@ -31,6 +31,12 @@ namespace WhatsThisFilm.Service
 
                     // Load cached info
                     _userdata = (UserData)(s.Deserialize(sr));
+
+                    // gently migrate single searchPath list
+                    if(_userdata.searchPathsList.Count == 0)
+                    {
+                        _userdata.searchPathsList.Add(_userdata.searchPath);
+                    }
                 }
 
                 firstFilmTitle = CleanUpCache();
@@ -52,6 +58,7 @@ namespace WhatsThisFilm.Service
             {
                 if (f != null)
                 {
+                    // cache migration
                     if ((f.titre == "Il est temps de mettre à jour votre application")
                         || (f.realisateur == null))
                     {
@@ -99,8 +106,9 @@ namespace WhatsThisFilm.Service
             return filteredSource;
         }
 
-        internal List<string> RefreshDataSource()
+        internal List<string> RefreshDataSource(int chosenPath)
         {
+            _userdata.searchPath = _userdata.searchPathsList[chosenPath];
             DirectoryInfo diSource = new DirectoryInfo(_userdata.searchPath);
 
             RawSource = new List<string>();
@@ -123,6 +131,19 @@ namespace WhatsThisFilm.Service
             set
             {
                 _userdata.searchPath = value;
+            }
+        }
+
+        public List<string> searchPathList
+        {
+            get
+            {
+                return _userdata.searchPathsList;
+            }
+
+            set
+            {
+                _userdata.searchPathsList = value;
             }
         }
 
@@ -199,6 +220,12 @@ namespace WhatsThisFilm.Service
         internal string GetFullPath(string p)
         {
             return Path.Combine(_userdata.searchPath, p);
+        }
+
+        internal void SnipFromDataSource(int p)
+        {
+            // TODO add warning and snip cache?
+            _userdata.searchPathsList.RemoveAt(p);
         }
     }
 }

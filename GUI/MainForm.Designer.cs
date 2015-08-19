@@ -56,13 +56,14 @@ namespace WhatsThisFilm
             this.label5 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblIndex = new System.Windows.Forms.Label();
-            this.lblSrc = new System.Windows.Forms.Label();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnAbout = new System.Windows.Forms.Button();
             this.txtFiltre = new System.Windows.Forms.TextBox();
             this.btnFilter = new System.Windows.Forms.Button();
+            this.directoryDDList = new System.Windows.Forms.ComboBox();
+            this.btnSnipDir = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelFilm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -344,22 +345,14 @@ namespace WhatsThisFilm
             this.lblIndex.TabIndex = 6;
             this.lblIndex.Text = "99";
             // 
-            // lblSrc
-            // 
-            this.lblSrc.AutoSize = true;
-            this.lblSrc.Location = new System.Drawing.Point(19, 6);
-            this.lblSrc.Name = "lblSrc";
-            this.lblSrc.Size = new System.Drawing.Size(35, 13);
-            this.lblSrc.TabIndex = 2;
-            this.lblSrc.Text = "label3";
-            // 
             // btnBrowse
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(202, 1);
+            this.btnBrowse.Location = new System.Drawing.Point(202, 13);
             this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(26, 23);
+            this.btnBrowse.Size = new System.Drawing.Size(25, 21);
             this.btnBrowse.TabIndex = 4;
             this.btnBrowse.Text = "...";
+            this.toolTip1.SetToolTip(this.btnBrowse, "Ajouter un répertoire");
             this.btnBrowse.UseVisualStyleBackColor = true;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
@@ -405,18 +398,39 @@ namespace WhatsThisFilm
             this.btnFilter.UseVisualStyleBackColor = true;
             this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
+            // directoryDDList
+            // 
+            this.directoryDDList.FormattingEnabled = true;
+            this.directoryDDList.Location = new System.Drawing.Point(14, 13);
+            this.directoryDDList.Name = "directoryDDList";
+            this.directoryDDList.Size = new System.Drawing.Size(182, 21);
+            this.directoryDDList.TabIndex = 9;
+            this.directoryDDList.SelectedIndexChanged += new System.EventHandler(this.directoryDDList_SelectedIndexChanged);
+            // 
+            // btnSnipDir
+            // 
+            this.btnSnipDir.Location = new System.Drawing.Point(233, 13);
+            this.btnSnipDir.Name = "btnSnipDir";
+            this.btnSnipDir.Size = new System.Drawing.Size(26, 21);
+            this.btnSnipDir.TabIndex = 11;
+            this.btnSnipDir.Text = "X";
+            this.toolTip1.SetToolTip(this.btnSnipDir, "Supprimer le répertoire");
+            this.btnSnipDir.UseVisualStyleBackColor = true;
+            this.btnSnipDir.Click += new System.EventHandler(this.btnSnipDir_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1005, 691);
+            this.Controls.Add(this.btnSnipDir);
+            this.Controls.Add(this.directoryDDList);
             this.Controls.Add(this.btnFilter);
             this.Controls.Add(this.txtFiltre);
             this.Controls.Add(this.btnAbout);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnBrowse);
-            this.Controls.Add(this.lblSrc);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ListeFilms);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -448,7 +462,6 @@ namespace WhatsThisFilm
         private System.Windows.Forms.Button btnPrev;
         private System.Windows.Forms.Label lblIndex;
         private System.Windows.Forms.Button btnWatchMovie;
-        private System.Windows.Forms.Label lblSrc;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.Label lblDuree;
         private System.Windows.Forms.Label label3;
@@ -469,6 +482,8 @@ namespace WhatsThisFilm
         private System.Windows.Forms.Label lblPresse;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnDeleteFiche;
+        private System.Windows.Forms.ComboBox directoryDDList;
+        private System.Windows.Forms.Button btnSnipDir;
     }
 }
 

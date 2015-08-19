@@ -9,5 +9,6 @@ namespace WhatsThisFilm.BO
     {
         public List<FilmInfo> list;
         public string searchPath;
+        public List<string> searchPathsList = new List<string>();
     }
 }
