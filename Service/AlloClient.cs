@@ -46,7 +46,8 @@ namespace WhatsThisFilm.Service
                 }
 
                 ans.totalInSearch = alFeed.MovieList.Count;
-                ans.link = apiMovie.LinkList[0].Href;
+                if (apiMovie.LinkList.Count > 0)
+                    ans.link = apiMovie.LinkList[0].Href;
 
                 if (apiMovie.Runtime != null)
                 { 

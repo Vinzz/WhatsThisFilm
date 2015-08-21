@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
@@ -76,7 +77,11 @@ namespace WhatsThisFilm
         private void refreshComboList()
         {
             directoryDDList.DataSource = null;
+            string savPath = _cache.searchPath;
             directoryDDList.DataSource = _cache.searchPathList;
+
+            _cache.searchPath = savPath;
+            directoryDDList.SelectedIndex = _cache.searchPathList.IndexOf(_cache.searchPath);
         }
 
         private void RefreshList()
@@ -86,7 +91,13 @@ namespace WhatsThisFilm
             int currDirIndex = 0;
 
             if (directoryDDList.SelectedIndex != -1)
+            { 
                 currDirIndex = directoryDDList.SelectedIndex;
+            }
+            else
+            {
+                 currDirIndex =_cache.searchPathList.IndexOf(_cache.searchPath);
+            }
 
             ListeFilms.DataSource = null;
             ListeFilms.DataSource = _cache.RefreshDataSource(currDirIndex);
@@ -255,6 +266,7 @@ namespace WhatsThisFilm
             if (fb.ShowDialog() == DialogResult.OK)
             {
                 _cache.searchPathList.Add(fb.SelectedPath);
+                _cache.searchPath = fb.SelectedPath;
                 refreshComboList();
             }
         }

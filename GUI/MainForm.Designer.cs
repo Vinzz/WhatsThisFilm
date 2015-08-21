@@ -433,6 +433,7 @@ namespace WhatsThisFilm
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ListeFilms);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "WhatsThisFilm?";

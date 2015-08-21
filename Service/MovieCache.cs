@@ -226,6 +226,7 @@ namespace WhatsThisFilm.Service
         {
             // TODO add warning and snip cache?
             _userdata.searchPathsList.RemoveAt(p);
+            _userdata.searchPath = _userdata.searchPathsList.Count > 0 ?_userdata.searchPathsList[0] : string.Empty;
         }
     }
 }
