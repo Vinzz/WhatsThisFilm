@@ -369,7 +369,7 @@ namespace WhatsThisFilm
             refreshComboList();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonRename_Click(object sender, EventArgs e)
         {
             if (ListeFilms.SelectedIndex != -1)
             { 

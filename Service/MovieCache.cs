@@ -33,7 +33,7 @@ namespace WhatsThisFilm.Service
                     _userdata = (UserData)(s.Deserialize(sr));
 
                     // gently migrate single searchPath list
-                    if(_userdata.searchPathsList.Count == 0)
+                    if (_userdata.searchPathsList.Count == 0)
                     {
                         _userdata.searchPathsList.Add(_userdata.searchPath);
                     }
@@ -149,12 +149,12 @@ namespace WhatsThisFilm.Service
 
         internal bool doesnotContainsFilmInfo(string p)
         {
-            if((_memory.ContainsKey(p) == false) || _memory[p] == null)
+            if ((_memory.ContainsKey(p) == false) || _memory[p] == null)
             {
                 return true;
             }
- 
-            if(_memory[p].titre == "-")
+
+            if (_memory[p].titre == "-")
             {
                 return true;
             }
@@ -200,7 +200,7 @@ namespace WhatsThisFilm.Service
                             }
 
                             if (bSavePic)
-                            f.jaquette.Save(@".\cache\" + f.Key + ".jpg", ImageFormat.Jpeg);
+                                f.jaquette.Save(@".\cache\" + f.Key + ".jpg", ImageFormat.Jpeg);
                         }
                         catch (Exception)
                         {
@@ -226,18 +226,25 @@ namespace WhatsThisFilm.Service
         {
             // TODO add warning and snip cache?
             _userdata.searchPathsList.RemoveAt(p);
-            _userdata.searchPath = _userdata.searchPathsList.Count > 0 ?_userdata.searchPathsList[0] : string.Empty;
+            _userdata.searchPath = _userdata.searchPathsList.Count > 0 ? _userdata.searchPathsList[0] : string.Empty;
         }
 
         internal void RenameFile(string key)
         {
             var filmInfo = _memory[key];
 
-            File.Move(GetFullPath(filmInfo.Key), GetFullPath(filmInfo.titre + Path.GetExtension(key)));
+            string newName = filmInfo.titre + Path.GetExtension(key);
+
+            foreach (char c in System.IO.Path.GetInvalidFileNameChars())
+            {
+                newName = newName.Replace(c, '_');
+            }
+
+            File.Move(GetFullPath(filmInfo.Key), GetFullPath(newName));
             filmInfo.Key = filmInfo.titre;
-            _memory[filmInfo.titre + Path.GetExtension(key)] = filmInfo;
+            _memory[newName] = filmInfo;
 
-
+            //Remove old reference
             _memory.Remove(key);
         }
     }

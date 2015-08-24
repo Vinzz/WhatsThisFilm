@@ -32,6 +32,7 @@ namespace WhatsThisFilm
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ListeFilms = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRename = new System.Windows.Forms.Button();
             this.btnDeleteFiche = new System.Windows.Forms.Button();
             this.lblResume = new System.Windows.Forms.Label();
             this.btnWatchMovie = new System.Windows.Forms.Button();
@@ -61,10 +62,9 @@ namespace WhatsThisFilm
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnAbout = new System.Windows.Forms.Button();
             this.txtFiltre = new System.Windows.Forms.TextBox();
+            this.btnSnipDir = new System.Windows.Forms.Button();
             this.btnFilter = new System.Windows.Forms.Button();
             this.directoryDDList = new System.Windows.Forms.ComboBox();
-            this.btnSnipDir = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelFilm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -85,7 +85,7 @@ namespace WhatsThisFilm
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnRename);
             this.panel1.Controls.Add(this.btnDeleteFiche);
             this.panel1.Controls.Add(this.lblResume);
             this.panel1.Controls.Add(this.btnWatchMovie);
@@ -100,6 +100,17 @@ namespace WhatsThisFilm
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(610, 602);
             this.panel1.TabIndex = 1;
+            // 
+            // btnRename
+            // 
+            this.btnRename.Location = new System.Drawing.Point(327, 225);
+            this.btnRename.Name = "btnRename";
+            this.btnRename.Size = new System.Drawing.Size(122, 23);
+            this.btnRename.TabIndex = 12;
+            this.btnRename.Text = "Renommer le fichier";
+            this.toolTip1.SetToolTip(this.btnRename, "Renommer le fichier avec le titre du film");
+            this.btnRename.UseVisualStyleBackColor = true;
+            this.btnRename.Click += new System.EventHandler(this.buttonRename_Click);
             // 
             // btnDeleteFiche
             // 
@@ -390,6 +401,17 @@ namespace WhatsThisFilm
             this.txtFiltre.TextChanged += new System.EventHandler(this.txtFiltre_TextChanged);
             this.txtFiltre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFiltre_KeyDown);
             // 
+            // btnSnipDir
+            // 
+            this.btnSnipDir.Location = new System.Drawing.Point(233, 13);
+            this.btnSnipDir.Name = "btnSnipDir";
+            this.btnSnipDir.Size = new System.Drawing.Size(26, 21);
+            this.btnSnipDir.TabIndex = 11;
+            this.btnSnipDir.Text = "X";
+            this.toolTip1.SetToolTip(this.btnSnipDir, "Supprimer le répertoire");
+            this.btnSnipDir.UseVisualStyleBackColor = true;
+            this.btnSnipDir.Click += new System.EventHandler(this.btnSnipDir_Click);
+            // 
             // btnFilter
             // 
             this.btnFilter.Location = new System.Drawing.Point(244, 43);
@@ -408,27 +430,6 @@ namespace WhatsThisFilm
             this.directoryDDList.Size = new System.Drawing.Size(182, 21);
             this.directoryDDList.TabIndex = 9;
             this.directoryDDList.SelectedIndexChanged += new System.EventHandler(this.directoryDDList_SelectedIndexChanged);
-            // 
-            // btnSnipDir
-            // 
-            this.btnSnipDir.Location = new System.Drawing.Point(233, 13);
-            this.btnSnipDir.Name = "btnSnipDir";
-            this.btnSnipDir.Size = new System.Drawing.Size(26, 21);
-            this.btnSnipDir.TabIndex = 11;
-            this.btnSnipDir.Text = "X";
-            this.toolTip1.SetToolTip(this.btnSnipDir, "Supprimer le répertoire");
-            this.btnSnipDir.UseVisualStyleBackColor = true;
-            this.btnSnipDir.Click += new System.EventHandler(this.btnSnipDir_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(327, 225);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Rename File";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainForm
             // 
@@ -497,7 +498,7 @@ namespace WhatsThisFilm
         private System.Windows.Forms.Button btnDeleteFiche;
         private System.Windows.Forms.ComboBox directoryDDList;
         private System.Windows.Forms.Button btnSnipDir;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRename;
     }
 }
 
