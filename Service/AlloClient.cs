@@ -15,7 +15,10 @@ namespace WhatsThisFilm.Service
         private static AlloCineApi api = new AlloCineApi();
         private static Regex noHTMLreg = new Regex("<[^>]*>");
 
-        public static FilmInfo GetFromTitle(string title, int index)
+        private static Movie currMovie;
+        private static int currCount;
+
+        public static FilmInfo GetFromTitleLight(string title, int index)
         {
             FilmInfo ans = new FilmInfo();
             string hexedTitle = TitleManipulator.HexIt(title);
@@ -26,6 +29,8 @@ namespace WhatsThisFilm.Service
 
             var alFeed = api.Search(hexedTitle, new[] { TypeFilters.Movie });
 
+            currCount = alFeed.MovieList.Count;
+
             if (alFeed.MovieList != null && alFeed.MovieList.Count >= index)
             {
                 Movie apiMovie = alFeed.MovieList[index - 1];
@@ -33,46 +38,64 @@ namespace WhatsThisFilm.Service
                 apiMovie = api.MovieGetInfo(apiMovie.Code, ResponseProfiles.Large, new[] { TypeFilters.Movie }, new[] { "synopsis" }, new[] { MediaFormat.Mpeg2 });
 
                 ans.titre = apiMovie.Title;
-                ans.orig_titre = apiMovie.OriginalTitle;
-                ans.year = apiMovie.ProductionYear.ToString();
-                if (apiMovie.CastingShort != null)
-                { 
-                    ans.realisateur = apiMovie.CastingShort.Directors;
-                }
 
-                if (apiMovie.Statistics != null)
-                { 
-                    ans.presse = (int)apiMovie.Statistics.PressRating;
-                }
+                currMovie = apiMovie;
+            }
 
-                ans.totalInSearch = alFeed.MovieList.Count;
-                if (apiMovie.LinkList.Count > 0)
-                    ans.link = apiMovie.LinkList[0].Href;
+            return ans;
+        }
 
-                if (apiMovie.Runtime != null)
-                { 
-                    ans.duree = TimeSpan.FromSeconds(int.Parse(apiMovie.Runtime)).ToString();
-                }
+        public static FilmInfo GetFromTitle(string title, int index)
+        {
+            FilmInfo ans = new FilmInfo();
+            string hexedTitle = TitleManipulator.HexIt(title);
 
-                ans.genre = "";
-                foreach (var genre in apiMovie.GenreList)
+            ans.HexedTitle = hexedTitle;
+            ans.Key = title;
+
+
+            ans.titre = currMovie.Title;
+            ans.orig_titre = currMovie.OriginalTitle;
+            ans.year = currMovie.ProductionYear.ToString();
+            if (currMovie.CastingShort != null)
+            {
+                ans.realisateur = currMovie.CastingShort.Directors;
+            }
+
+            if (currMovie.Statistics != null)
+            {
+                ans.presse = (int)currMovie.Statistics.PressRating;
+            }
+
+            ans.totalInSearch = currCount;
+            if (currMovie.LinkList != null && currMovie.LinkList.Count > 0)
+                ans.link = currMovie.LinkList[0].Href;
+
+            if (currMovie.Runtime != null)
+            {
+                ans.duree = TimeSpan.FromSeconds(int.Parse(currMovie.Runtime)).ToString();
+            }
+
+            ans.genre = "";
+            if (currMovie.GenreList != null)
+            { 
+                foreach (var genre in currMovie.GenreList)
                 {
                     ans.genre += genre.Value + ", ";
                 }
                 ans.genre = ans.genre.TrimEnd(' ');
                 ans.genre = ans.genre.TrimEnd(',');
+            }
+            if (currMovie.SynopsisShort != null)
+            {
+                ans.synopsis = currMovie.SynopsisShort.Replace("<br />", "\n").Replace("<br/>", "\n");
+                ans.synopsis = noHTMLreg.Replace(ans.synopsis, "");
+            }
 
-                if (apiMovie.SynopsisShort != null)
-                { 
-                    ans.synopsis = apiMovie.SynopsisShort.Replace("<br />", "\n").Replace("<br/>", "\n");
-                    ans.synopsis = noHTMLreg.Replace(ans.synopsis, "");
-                }
-
-                if (apiMovie.Poster != null)
-                {
-                    ans.jaquette = BitmapFromWeb(apiMovie.Poster.Href);
-                    ans.jaquetteTime = DateTime.Now;
-                }
+            if (currMovie.Poster != null)
+            {
+                ans.jaquette = BitmapFromWeb(currMovie.Poster.Href);
+                ans.jaquetteTime = DateTime.Now;
             }
 
             return ans;
@@ -82,7 +105,6 @@ namespace WhatsThisFilm.Service
         {
             try
             {
-
                 HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(URL);
 
                 myRequest.Method = "GET";

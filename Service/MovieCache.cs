@@ -228,5 +228,17 @@ namespace WhatsThisFilm.Service
             _userdata.searchPathsList.RemoveAt(p);
             _userdata.searchPath = _userdata.searchPathsList.Count > 0 ?_userdata.searchPathsList[0] : string.Empty;
         }
+
+        internal void RenameFile(string key)
+        {
+            var filmInfo = _memory[key];
+
+            File.Move(GetFullPath(filmInfo.Key), GetFullPath(filmInfo.titre + Path.GetExtension(key)));
+            filmInfo.Key = filmInfo.titre;
+            _memory[filmInfo.titre + Path.GetExtension(key)] = filmInfo;
+
+
+            _memory.Remove(key);
+        }
     }
 }

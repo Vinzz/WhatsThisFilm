@@ -124,7 +124,7 @@ namespace WhatsThisFilm
                 {
                     lblIndex.Text = currIndex.ToString();
 
-                    finfo = AlloClient.GetFromTitle(ListeFilms.SelectedItem.ToString(), currIndex);
+                    finfo = AlloClient.GetFromTitleLight(ListeFilms.SelectedItem.ToString(), currIndex);
 
                     if (finfo != null)
                     {
@@ -144,7 +144,11 @@ namespace WhatsThisFilm
                                         return GetFilmInfos(true);
                                     }
                                 }
+                               
                             }
+
+                            // Get the full info
+                            finfo = AlloClient.GetFromTitle(ListeFilms.SelectedItem.ToString(), currIndex);
                         }
                     }
                 }
@@ -363,6 +367,15 @@ namespace WhatsThisFilm
         {
             _cache.SnipFromDataSource(directoryDDList.SelectedIndex);
             refreshComboList();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (ListeFilms.SelectedIndex != -1)
+            { 
+                _cache.RenameFile(ListeFilms.SelectedItem.ToString());
+                RefreshList();
+            }
         }
     }
 }
