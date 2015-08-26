@@ -265,7 +265,7 @@ namespace WhatsThisFilm
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
-            _cache.PersistCache();
+            _cache.PersistAndCleanUpCache();
         }
 
         private void btnWatchMovie_Click(object sender, EventArgs e)

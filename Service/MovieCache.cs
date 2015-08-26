@@ -68,10 +68,16 @@ namespace WhatsThisFilm.Service
                     firstFilmTitle = f.HexedTitle;
                     _memory[f.Key] = f;
 
-                    if (File.Exists(@".\cache\" + f.Key + ".jpg"))
+                    string picName = @".\cache\" + f.Key + ".jpg";
+                    if (File.Exists(picName))
                     {
-                        _memory[f.Key].jaquette = (Bitmap)Bitmap.FromFile(@".\cache\" + f.Key + ".jpg");
-                        _memory[f.Key].jaquetteTime = new FileInfo(@".\cache\" + f.Key + ".jpg").LastWriteTime;
+                        using (FileStream stream = new FileStream(picName, FileMode.Open, FileAccess.Read))
+                        {
+                            var bmp = new Bitmap(stream);
+                           _memory[f.Key].jaquette = (Bitmap)bmp.Clone();
+                        }
+
+                        _memory[f.Key].jaquetteTime = new FileInfo(picName).LastWriteTime;
                     }
                     else
                         if (_memory[f.Key].titre != "-")
@@ -246,6 +252,41 @@ namespace WhatsThisFilm.Service
 
             //Remove old reference
             _memory.Remove(key);
+        }
+
+        internal void PersistAndCleanUpCache()
+        {
+            PersistCache();
+
+            List<string> actualMovie = new List<string>();
+
+            foreach (string s in _userdata.searchPathsList)
+            {
+                foreach(string f in (Directory.GetFiles(s)))
+                {
+                    actualMovie.Add(Path.GetFileName(f));
+                }
+            }
+
+            foreach(var file in Directory.GetFiles(@".\cache\","*.jpg"))
+            {
+                string picName = Path.GetFileNameWithoutExtension(file);
+
+                if(!_memory.ContainsKey(picName))
+                {
+                    File.Delete(file);
+                }
+                else
+                {
+                    if(!actualMovie.Contains(picName))
+                    {
+                        File.Delete(file);
+                        _memory.Remove(picName);
+                    }
+                }
+            }
+
+            PersistCache();
         }
     }
 }
