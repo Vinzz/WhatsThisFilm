@@ -37,7 +37,7 @@ namespace WhatsThisFilm.Service
 
                 apiMovie = api.MovieGetInfo(apiMovie.Code, ResponseProfiles.Large, new[] { TypeFilters.Movie }, new[] { "synopsis" }, new[] { MediaFormat.Mpeg2 });
 
-                if(!string.IsNullOrEmpty(apiMovie.Error.Value))
+                if(apiMovie.Error != null)
                 {
                     throw new Exception(apiMovie.Error.Value);
                 }
@@ -50,7 +50,7 @@ namespace WhatsThisFilm.Service
             { 
                 currCount = 0;
 
-                if (!string.IsNullOrEmpty(alFeed.Error.Value))
+                if (alFeed.Error != null)
                 {
                     throw new Exception(alFeed.Error.Value);
                 }
