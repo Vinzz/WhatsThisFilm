@@ -113,78 +113,90 @@ namespace WhatsThisFilm
         private int currIndex;
         private int maxIndex;
 
-        private int GetFilmInfos(bool bIsAuto)
+        private void GetFilmInfos(bool bIsAuto)
         {
-            this.Cursor = Cursors.WaitCursor;
-
-            FilmInfo finfo = null;
-            if (ListeFilms.SelectedIndex != -1)
+            try
             {
-                if (_cache.doesnotContainsFilmInfo(ListeFilms.SelectedItem.ToString()))
+                _cache.PersistCache();
+                this.Cursor = Cursors.WaitCursor;
+
+                FilmInfo finfo = null;
+                if (ListeFilms.SelectedIndex != -1)
                 {
-                    lblIndex.Text = currIndex.ToString();
-
-                    finfo = AlloClient.GetFromTitleLight(ListeFilms.SelectedItem.ToString(), currIndex);
-
-                    if (finfo != null)
+                    if (_cache.doesnotContainsFilmInfo(ListeFilms.SelectedItem.ToString()))
                     {
-                        maxIndex = finfo.totalInSearch;
+                        lblIndex.Text = currIndex.ToString();
 
-                        if (bIsAuto)
+                        finfo = AlloClient.GetFromTitleLight(ListeFilms.SelectedItem.ToString(), currIndex);
+
+                        if (finfo != null)
                         {
-                            if ((finfo.titre != null) && maxIndex > 1)
-                            {
-                                //Stop if the film is ok with the file title
-                                if (!IsOK(finfo))
-                                {
-                                    if (currIndex != maxIndex)
-                                    {
-                                        ++currIndex;
-                                        btnPrev.Enabled = true;
-                                        return GetFilmInfos(true);
-                                    }
-                                }
-                               
-                            }
+                            maxIndex = finfo.totalInSearch;
 
-                            // Get the full info
-                            finfo = AlloClient.GetFromTitle(ListeFilms.SelectedItem.ToString(), currIndex);
+                            if (bIsAuto)
+                            {
+                                if ((finfo.titre != null) && maxIndex > 1)
+                                {
+                                    //Stop if the film is ok with the file title
+                                    if (!IsOK(finfo))
+                                    {
+                                        if (currIndex != maxIndex)
+                                        {
+                                            ++currIndex;
+                                            btnPrev.Enabled = true;
+                                            GetFilmInfos(true);
+                                        }
+                                    }
+
+                                }
+
+                                if (finfo.titre != null)
+                                {
+                                    // Get the full info
+                                    finfo = AlloClient.GetFromTitle(ListeFilms.SelectedItem.ToString(), currIndex);
+                                }
+                            }
                         }
                     }
+                    else
+                    {
+                        currIndex = 0;
+
+                        lblIndex.Text = currIndex.ToString();
+                        finfo = _cache.GetInfo(ListeFilms.SelectedItem.ToString());
+                    }
+                }
+
+                if (finfo != null)
+                {
+                    pictureBox1.Image = finfo.jaquette;
+                    lblYear.Text = finfo.year;
+                    lblTitle.Text = finfo.titre + " (" + finfo.HexedTitle + ")";
+                    lblDirector.Text = finfo.realisateur;
+                    lblResume.Text = finfo.synopsis;
+                    lblDuree.Text = finfo.duree;
+                    lblTotal.Text = finfo.totalInSearch.ToString();
+                    lnklblFiche.Text = finfo.link;
+                    lblGenres.Text = TitleManipulator.AddSpacesToSentence(finfo.genre);
+                    lblPresse.Text = finfo.presse + "/5";
                 }
                 else
                 {
-                    currIndex = 0;
-
-                    lblIndex.Text = currIndex.ToString();
-                    finfo = _cache.GetInfo(ListeFilms.SelectedItem.ToString());
+                    SnipFiche();
                 }
-            }
 
-            if (finfo != null)
+                if (ListeFilms.SelectedIndex != -1)
+                    _cache.SetInfo(ListeFilms.SelectedItem.ToString(), finfo);
+            }
+            catch (Exception e)
             {
-                pictureBox1.Image = finfo.jaquette;
-                lblYear.Text = finfo.year;
-                lblTitle.Text = finfo.titre + " (" + finfo.HexedTitle + ")";
-                lblDirector.Text = finfo.realisateur;
-                lblResume.Text = finfo.synopsis;
-                lblDuree.Text = finfo.duree;
-                lblTotal.Text = finfo.totalInSearch.ToString();
-                lnklblFiche.Text = finfo.link;
-                lblGenres.Text = TitleManipulator.AddSpacesToSentence(finfo.genre);
-                lblPresse.Text = finfo.presse + "/5";
+                MessageBox.Show(e.Message);                
             }
-            else
+            finally
             {
-                SnipFiche();
+                this.Cursor = Cursors.Arrow;
+                
             }
-
-            if (ListeFilms.SelectedIndex != -1)
-                _cache.SetInfo(ListeFilms.SelectedItem.ToString(), finfo);
-
-
-            this.Cursor = Cursors.Arrow;
-            return 1;
         }
 
         private void SnipFiche()

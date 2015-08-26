@@ -29,17 +29,31 @@ namespace WhatsThisFilm.Service
 
             var alFeed = api.Search(hexedTitle, new[] { TypeFilters.Movie });
 
-            currCount = alFeed.MovieList.Count;
-
             if (alFeed.MovieList != null && alFeed.MovieList.Count >= index)
             {
+                currCount = alFeed.MovieList.Count;
+
                 Movie apiMovie = alFeed.MovieList[index - 1];
 
                 apiMovie = api.MovieGetInfo(apiMovie.Code, ResponseProfiles.Large, new[] { TypeFilters.Movie }, new[] { "synopsis" }, new[] { MediaFormat.Mpeg2 });
 
+                if(!string.IsNullOrEmpty(apiMovie.Error.Value))
+                {
+                    throw new Exception(apiMovie.Error.Value);
+                }
+
                 ans.titre = apiMovie.Title;
 
                 currMovie = apiMovie;
+            }
+            else 
+            { 
+                currCount = 0;
+
+                if (!string.IsNullOrEmpty(alFeed.Error.Value))
+                {
+                    throw new Exception(alFeed.Error.Value);
+                }
             }
 
             return ans;
