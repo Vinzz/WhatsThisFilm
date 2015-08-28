@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -73,8 +74,10 @@ namespace WhatsThisFilm.Service
                     {
                         using (FileStream stream = new FileStream(picName, FileMode.Open, FileAccess.Read))
                         {
+                            Debug.WriteLine(picName);
                             var bmp = new Bitmap(stream);
                            _memory[f.Key].jaquette = (Bitmap)bmp.Clone();
+                            Debug.WriteLine("Success");
                         }
 
                         _memory[f.Key].jaquetteTime = new FileInfo(picName).LastWriteTime;
