@@ -209,7 +209,15 @@ namespace WhatsThisFilm.Service
                             }
 
                             if (bSavePic)
-                                f.jaquette.Save(@".\cache\" + f.Key + ".jpg", ImageFormat.Jpeg);
+                            { 
+                                string savPath = @".\cache\" + f.Key + ".jpg";
+                                f.jaquette.Save(savPath, ImageFormat.Jpeg);
+
+                                if(new FileInfo(savPath).Length == 0)
+                                {
+                                    throw new Exception("WTF?");
+                                }
+                            }
                         }
                         catch (Exception)
                         {
