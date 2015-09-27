@@ -134,7 +134,7 @@ namespace WhatsThisFilm
             // 
             // btnWatchMovie
             // 
-            this.btnWatchMovie.Location = new System.Drawing.Point(526, 550);
+            this.btnWatchMovie.Location = new System.Drawing.Point(546, 374);
             this.btnWatchMovie.Name = "btnWatchMovie";
             this.btnWatchMovie.Size = new System.Drawing.Size(59, 36);
             this.btnWatchMovie.TabIndex = 7;
