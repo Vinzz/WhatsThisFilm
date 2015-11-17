@@ -258,7 +258,7 @@ namespace WhatsThisFilm.Service
             }
 
             File.Move(GetFullPath(filmInfo.Key), GetFullPath(newName));
-            filmInfo.Key = filmInfo.titre;
+            filmInfo.Key = newName;
             _memory[newName] = filmInfo;
 
             //Remove old reference
