@@ -40,7 +40,7 @@ namespace WhatsThisFilm.Service
                     }
                 }
 
-                firstFilmTitle = CleanUpCache();
+                firstFilmTitle = FillPicInCache();
             }
             else
             {
@@ -50,7 +50,7 @@ namespace WhatsThisFilm.Service
             return firstFilmTitle;
         }
 
-        private string CleanUpCache()
+        private string FillPicInCache()
         {
             string firstFilmTitle = string.Empty;
 
@@ -70,11 +70,12 @@ namespace WhatsThisFilm.Service
                     _memory[f.Key] = f;
 
                     string picName = @".\cache\" + f.Key + ".jpg";
-                    if (File.Exists(picName))
+                    Debug.WriteLine(picName);
+                    FileInfo picFile = new FileInfo(picName);
+                    if (picFile.Exists && picFile.Length > 0)
                     {
                         using (FileStream stream = new FileStream(picName, FileMode.Open, FileAccess.Read))
                         {
-                            Debug.WriteLine(picName);
                             var bmp = new Bitmap(stream);
                            _memory[f.Key].jaquette = (Bitmap)bmp.Clone();
                             Debug.WriteLine("Success");
@@ -83,9 +84,11 @@ namespace WhatsThisFilm.Service
                         _memory[f.Key].jaquetteTime = new FileInfo(picName).LastWriteTime;
                     }
                     else
+                    {
+                        Debug.WriteLine("Wipe");
                         if (_memory[f.Key].titre != "-")
                             _memory[f.Key] = null;
-
+                    }
                 }
             }
 
