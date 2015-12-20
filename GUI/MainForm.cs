@@ -178,7 +178,7 @@ namespace WhatsThisFilm
                     lblTotal.Text = finfo.totalInSearch.ToString();
                     lnklblFiche.Text = finfo.link;
                     lblGenres.Text = TitleManipulator.AddSpacesToSentence(finfo.genre);
-                    lblPresse.Text = finfo.presse + "/5";
+                    lblPresse.Text = finfo.presse.ToString("0.0") + "/5";
                 }
                 else
                 {

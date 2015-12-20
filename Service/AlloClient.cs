@@ -78,7 +78,7 @@ namespace WhatsThisFilm.Service
 
             if (currMovie.Statistics != null)
             {
-                ans.presse = (int)currMovie.Statistics.PressRating;
+                ans.presse = (double)currMovie.Statistics.PressRating;
             }
 
             ans.totalInSearch = currCount;

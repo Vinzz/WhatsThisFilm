@@ -39,7 +39,7 @@ namespace WhatsThisFilm
 
         public DateTime jaquetteTime { get; set; }
 
-        public int presse { get; set; }
+        public double presse { get; set; }
 
         public string StringVal()
         {
