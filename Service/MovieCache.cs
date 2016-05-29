@@ -18,15 +18,20 @@ namespace WhatsThisFilm.Service
         private Dictionary<string, FilmInfo> _memory = new Dictionary<string, FilmInfo>();
         private UserData _userdata;
 
+        private string cachePath = Path.Combine(Environment.GetFolderPath(
+    Environment.SpecialFolder.ApplicationData), @"WhatsThisFilmCache\");
+        private string cacheXMLFile = string.Empty;
+
         public List<string> RawSource { get; set; }
 
         public string InitCache()
         {
             string firstFilmTitle = string.Empty;
+            cacheXMLFile = Path.Combine(cachePath, "cache.xml");
 
-            if (File.Exists(@".\cache\cache.xml"))
+            if (File.Exists(cacheXMLFile))
             {
-                using (StreamReader sr = new StreamReader(@".\cache\cache.xml", true))
+                using (StreamReader sr = new StreamReader(cacheXMLFile, true))
                 {
                     XmlSerializer s = new XmlSerializer(typeof(UserData));
 
@@ -69,7 +74,7 @@ namespace WhatsThisFilm.Service
                     firstFilmTitle = f.HexedTitle;
                     _memory[f.Key] = f;
 
-                    string picName = @".\cache\" + f.Key + ".jpg";
+                    string picName = string.Format(@"{0}\{1}.jpg", cachePath, f.Key);
                     Debug.WriteLine(picName);
                     FileInfo picFile = new FileInfo(picName);
                     if (picFile.Exists && picFile.Length > 0)
@@ -190,10 +195,10 @@ namespace WhatsThisFilm.Service
             {
                 XmlSerializer s = new XmlSerializer(typeof(UserData));
 
-                if (!Directory.Exists(@".\cache\"))
-                    Directory.CreateDirectory(@".\cache\");
+                if (!Directory.Exists(cachePath))
+                    Directory.CreateDirectory(cachePath);
 
-                System.IO.TextWriter xw = new System.IO.StreamWriter(@".\cache\cache.xml", false, System.Text.Encoding.UTF8);
+                System.IO.TextWriter xw = new System.IO.StreamWriter(cacheXMLFile, false, System.Text.Encoding.UTF8);
 
                 _userdata.list = new List<FilmInfo>();
                 foreach (FilmInfo f in _memory.Values)
@@ -205,18 +210,18 @@ namespace WhatsThisFilm.Service
                             bool bSavePic = true;
 
                             // Do not save an up to date image
-                            if (File.Exists(@".\cache\" + f.Key + ".jpg"))
+                            string picName = string.Format(@"{0}\{1}.jpg", cachePath, f.Key);
+                            if (File.Exists(picName))
                             {
-                                if (f.jaquetteTime == new FileInfo(@".\cache\" + f.Key + ".jpg").LastWriteTime)
+                                if (f.jaquetteTime == new FileInfo(picName).LastWriteTime)
                                     bSavePic = false;
                             }
 
                             if (bSavePic)
-                            { 
-                                string savPath = @".\cache\" + f.Key + ".jpg";
-                                f.jaquette.Save(savPath, ImageFormat.Jpeg);
+                            {  
+                                f.jaquette.Save(picName, ImageFormat.Jpeg);
 
-                                if(new FileInfo(savPath).Length == 0)
+                                if(new FileInfo(picName).Length == 0)
                                 {
                                     throw new Exception("WTF?");
                                 }
@@ -282,7 +287,7 @@ namespace WhatsThisFilm.Service
                 }
             }
 
-            foreach(var file in Directory.GetFiles(@".\cache\","*.jpg"))
+            foreach(var file in Directory.GetFiles(cachePath, "*.jpg"))
             {
                 string picName = Path.GetFileNameWithoutExtension(file);
 
