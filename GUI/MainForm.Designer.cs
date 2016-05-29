@@ -451,6 +451,7 @@ namespace WhatsThisFilm
             this.Name = "MainForm";
             this.Text = "WhatsThisFilm?";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panelFilm.ResumeLayout(false);

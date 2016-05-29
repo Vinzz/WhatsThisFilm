@@ -389,5 +389,10 @@ namespace WhatsThisFilm
                 RefreshList();
             }
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            this.Location = new Point(0, 0);
+        }
     }
 }
