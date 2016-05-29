@@ -33,6 +33,7 @@ namespace WhatsThisFilm
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
+            this.lblVersion = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -58,7 +59,7 @@ namespace WhatsThisFilm
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(12, 86);
+            this.linkLabel2.Location = new System.Drawing.Point(12, 108);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(126, 13);
             this.linkLabel2.TabIndex = 2;
@@ -68,18 +69,28 @@ namespace WhatsThisFilm
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(5, 68);
+            this.label2.Location = new System.Drawing.Point(5, 90);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(150, 18);
             this.label2.TabIndex = 3;
             this.label2.Text = "Merci à Allociné API";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblVersion
+            // 
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Location = new System.Drawing.Point(45, 67);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(68, 13);
+            this.lblVersion.TabIndex = 4;
+            this.lblVersion.Text = "version 0.0.0";
+            // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(164, 118);
+            this.ClientSize = new System.Drawing.Size(164, 137);
+            this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.linkLabel1);
@@ -90,6 +101,7 @@ namespace WhatsThisFilm
             this.Name = "About";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "A propos.";
+            this.Load += new System.EventHandler(this.About_Load);
             this.Click += new System.EventHandler(this.About_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -102,5 +114,6 @@ namespace WhatsThisFilm
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblVersion;
     }
 }

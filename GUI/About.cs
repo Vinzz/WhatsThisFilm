@@ -30,5 +30,11 @@ namespace WhatsThisFilm
         {
             Process.Start("https://allocineapi.codeplex.com");
         }
+
+        private void About_Load(object sender, EventArgs e)
+        {
+            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            lblVersion.Text = string.Format("version {0}.{1}.{2}", version.Major, version.Minor, version.Build);
+        }
     }
 }
