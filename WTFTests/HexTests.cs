@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WhatsThisFilm;
 
 namespace WTFTests
 {
@@ -16,7 +15,7 @@ namespace WTFTests
             
             foreach(FileInfo fi in dInfo.GetFiles())
             {
-                Console.WriteLine("{0}\n{1}\n", fi.Name, TitleManipulator.HexIt(fi.Name));
+                //Console.WriteLine("{0}\n{1}\n", fi.Name, TitleManipulator.HexIt(fi.Name));
             }
         }
     }

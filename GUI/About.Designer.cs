@@ -61,10 +61,10 @@ namespace WhatsThisFilm
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.Location = new System.Drawing.Point(12, 108);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(126, 13);
+            this.linkLabel2.Size = new System.Drawing.Size(192, 13);
             this.linkLabel2.TabIndex = 2;
             this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "allocineapi.codeplex.com";
+            this.linkLabel2.Text = "https://github.com/gromez/allocine-api";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // label2
@@ -89,7 +89,7 @@ namespace WhatsThisFilm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(164, 137);
+            this.ClientSize = new System.Drawing.Size(216, 137);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.linkLabel2);

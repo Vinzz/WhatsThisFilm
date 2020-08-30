@@ -35,7 +35,7 @@ namespace WhatsThisFilm.Service
 
                 Movie apiMovie = alFeed.MovieList[index - 1];
 
-                apiMovie = api.MovieGetInfo(apiMovie.Code, ResponseProfiles.Large, new[] { TypeFilters.Movie }, new[] { "synopsis" }, new[] { MediaFormat.Mpeg2 });
+                apiMovie = api.MovieGetInfo(int.Parse(apiMovie.Code), ResponseProfiles.Large, new[] { TypeFilters.Movie }, new[] { "synopsis" }, new[] { MediaFormat.Mpeg2 });
 
                 if(apiMovie.Error != null)
                 {
@@ -76,7 +76,7 @@ namespace WhatsThisFilm.Service
                 ans.realisateur = currMovie.CastingShort.Directors;
             }
 
-            if (currMovie.Statistics != null)
+            if (currMovie.Statistics != null && currMovie.Statistics.PressRating != null)
             {
                 ans.presse = (double)currMovie.Statistics.PressRating;
             }
