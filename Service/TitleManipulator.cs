@@ -50,6 +50,13 @@ namespace WhatsThisFilm
         public static string HexIt(string st)
         {
             st = Path.GetFileNameWithoutExtension(st);
+
+            if (st.Contains(" french "))
+            {
+                //kludge for the french dispatch
+                return st;
+            }
+
             //Remove . and _ and - by spaces
             st = Regex.Replace(st, "-|\\.|_", " ");
             //Convert the title
