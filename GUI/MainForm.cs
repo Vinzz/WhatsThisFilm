@@ -56,6 +56,10 @@ namespace WhatsThisFilm
                 case Keys.Enter:
                     btnWatchMovie_Click(this, null);
                     break;
+                case Keys.Delete:
+                    btnDeleteMovie_Click(this, null);
+                    break;
+
             }
         }
 
@@ -271,6 +275,11 @@ namespace WhatsThisFilm
         private void btnWatchMovie_Click(object sender, EventArgs e)
         {
             Process.Start(_cache.GetFullPath(ListeFilms.SelectedItem.ToString()));
+        }
+
+        private void btnDeleteMovie_Click(object sender, EventArgs e)
+        {
+            File.Delete(_cache.GetFullPath(ListeFilms.SelectedItem.ToString()));
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)

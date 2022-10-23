@@ -65,6 +65,7 @@ namespace WhatsThisFilm
             this.btnSnipDir = new System.Windows.Forms.Button();
             this.btnFilter = new System.Windows.Forms.Button();
             this.directoryDDList = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelFilm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -85,6 +86,7 @@ namespace WhatsThisFilm
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btnRename);
             this.panel1.Controls.Add(this.btnDeleteFiche);
             this.panel1.Controls.Add(this.lblResume);
@@ -431,6 +433,16 @@ namespace WhatsThisFilm
             this.directoryDDList.TabIndex = 9;
             this.directoryDDList.SelectedIndexChanged += new System.EventHandler(this.directoryDDList_SelectedIndexChanged);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(327, 255);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(122, 23);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Effacer fichier";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnDeleteMovie_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -500,6 +512,7 @@ namespace WhatsThisFilm
         private System.Windows.Forms.ComboBox directoryDDList;
         private System.Windows.Forms.Button btnSnipDir;
         private System.Windows.Forms.Button btnRename;
+        private System.Windows.Forms.Button button1;
     }
 }
 
