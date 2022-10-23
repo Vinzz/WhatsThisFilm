@@ -51,7 +51,7 @@ namespace WhatsThisFilm
         {
             st = Path.GetFileNameWithoutExtension(st);
 
-            if (st.Contains(" french "))
+            if (st.ToLower().Contains(" french "))
             {
                 //kludge for the french dispatch
                 return st;
