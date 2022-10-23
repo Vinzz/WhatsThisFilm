@@ -280,6 +280,7 @@ namespace WhatsThisFilm
         private void btnDeleteMovie_Click(object sender, EventArgs e)
         {
             File.Delete(_cache.GetFullPath(ListeFilms.SelectedItem.ToString()));
+            RefreshList();
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
