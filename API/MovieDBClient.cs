@@ -80,7 +80,7 @@ namespace WhatsThisFilm.API
  
 
 
-            //ans.totalInSearch = currCount;
+            ans.totalInSearch = currCount;
 
 
 
