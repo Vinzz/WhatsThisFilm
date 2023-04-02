@@ -40,6 +40,8 @@ namespace WhatsThisFilm
             btnNext = new System.Windows.Forms.Button();
             btnPrev = new System.Windows.Forms.Button();
             panelFilm = new System.Windows.Forms.Panel();
+            lnklblAllocine = new System.Windows.Forms.LinkLabel();
+            label9 = new System.Windows.Forms.Label();
             lblPresse = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             lblDirector = new System.Windows.Forms.Label();
@@ -107,7 +109,7 @@ namespace WhatsThisFilm
             // 
             // button1
             // 
-            button1.Location = new System.Drawing.Point(382, 294);
+            button1.Location = new System.Drawing.Point(382, 325);
             button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             button1.Name = "button1";
             button1.Size = new System.Drawing.Size(142, 27);
@@ -118,7 +120,7 @@ namespace WhatsThisFilm
             // 
             // btnRename
             // 
-            btnRename.Location = new System.Drawing.Point(382, 260);
+            btnRename.Location = new System.Drawing.Point(382, 291);
             btnRename.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnRename.Name = "btnRename";
             btnRename.Size = new System.Drawing.Size(142, 27);
@@ -189,6 +191,8 @@ namespace WhatsThisFilm
             // 
             // panelFilm
             // 
+            panelFilm.Controls.Add(lnklblAllocine);
+            panelFilm.Controls.Add(label9);
             panelFilm.Controls.Add(lblPresse);
             panelFilm.Controls.Add(label7);
             panelFilm.Controls.Add(lblDirector);
@@ -206,8 +210,32 @@ namespace WhatsThisFilm
             panelFilm.Location = new System.Drawing.Point(382, 35);
             panelFilm.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             panelFilm.Name = "panelFilm";
-            panelFilm.Size = new System.Drawing.Size(722, 205);
+            panelFilm.Size = new System.Drawing.Size(722, 226);
             panelFilm.TabIndex = 3;
+            // 
+            // lnklblAllocine
+            // 
+            lnklblAllocine.AutoSize = true;
+            lnklblAllocine.Location = new System.Drawing.Point(114, 201);
+            lnklblAllocine.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lnklblAllocine.Name = "lnklblAllocine";
+            lnklblAllocine.Size = new System.Drawing.Size(60, 15);
+            lnklblAllocine.TabIndex = 15;
+            lnklblAllocine.TabStop = true;
+            lnklblAllocine.Text = "linkLabel2";
+            toolTip1.SetToolTip(lnklblAllocine, "Fiche sur le site allociné");
+            lnklblAllocine.LinkClicked += lnklblFiche_LinkClicked;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label9.Location = new System.Drawing.Point(14, 201);
+            label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(52, 13);
+            label9.TabIndex = 14;
+            label9.Text = "Allociné";
             // 
             // lblPresse
             // 
@@ -484,7 +512,7 @@ namespace WhatsThisFilm
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new System.Drawing.Size(1581, 797);
+            ClientSize = new System.Drawing.Size(1364, 749);
             Controls.Add(btnSnipDir);
             Controls.Add(directoryDDList);
             Controls.Add(btnFilter);
@@ -549,6 +577,8 @@ namespace WhatsThisFilm
         private System.Windows.Forms.Button btnSnipDir;
         private System.Windows.Forms.Button btnRename;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.LinkLabel lnklblAllocine;
+        private System.Windows.Forms.Label label9;
     }
 }
 

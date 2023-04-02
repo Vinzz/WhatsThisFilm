@@ -14,6 +14,7 @@ using System.Text.RegularExpressions;
 using System.Globalization;
 using WhatsThisFilm.Service;
 using WhatsThisFilm.API;
+using System.Security.Policy;
 
 namespace WhatsThisFilm
 {
@@ -183,6 +184,7 @@ namespace WhatsThisFilm
                     lblDuree.Text = finfo.duree;
                     lblTotal.Text = finfo.totalInSearch.ToString();
                     lnklblFiche.Text = finfo.link;
+                    lnklblAllocine.Text = finfo.allocinelink;
                     lblGenres.Text = TitleManipulator.AddSpacesToSentence(finfo.genre);
                     lblPresse.Text = finfo.popularity;
                 }
@@ -301,12 +303,13 @@ namespace WhatsThisFilm
 
         private void lnklblFiche_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start(lnklblFiche.Text);
+            var lnk = sender as LinkLabel;
+            Process.Start(new ProcessStartInfo { FileName = lnk.Text, UseShellExecute = true });
         }
 
         private void logoBox_Click(object sender, EventArgs e)
         {
-            Process.Start("www.allocine.fr");
+            Process.Start(new ProcessStartInfo { FileName = "https://www.themoviedb.org/", UseShellExecute = true });
         }
 
         private void btnAbout_Click(object sender, EventArgs e)

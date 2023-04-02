@@ -11,6 +11,8 @@ namespace WhatsThisFilm
     /// </summary>
     public class FilmInfo
     {
+        internal string allocinelink;
+
         /// <summary>
         /// Name of the file
         /// </summary>

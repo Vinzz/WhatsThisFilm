@@ -53,7 +53,7 @@ namespace WhatsThisFilm.API
             ans.synopsis = currMovie.Overview;
             ans.popularity = $"{currMovie.VoteAverage:0.#} / 10 ({currMovie.VoteCount:n} votes)";
             ans.link = $"https://www.themoviedb.org/movie/{currMovie.Id}";
-
+            ans.allocinelink = $"https://www.allocine.fr/rechercher/?q={currMovie.Title}";
             if (movie.Genres != null)
             {
                 foreach (var genre in movie.Genres)
