@@ -28,451 +28,486 @@ namespace WhatsThisFilm
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.ListeFilms = new System.Windows.Forms.ListBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnRename = new System.Windows.Forms.Button();
-            this.btnDeleteFiche = new System.Windows.Forms.Button();
-            this.lblResume = new System.Windows.Forms.Label();
-            this.btnWatchMovie = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnPrev = new System.Windows.Forms.Button();
-            this.panelFilm = new System.Windows.Forms.Panel();
-            this.lblPresse = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lblDirector = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblGenres = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lnklblFiche = new System.Windows.Forms.LinkLabel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblDuree = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblYear = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.lblIndex = new System.Windows.Forms.Label();
-            this.btnBrowse = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnAbout = new System.Windows.Forms.Button();
-            this.txtFiltre = new System.Windows.Forms.TextBox();
-            this.btnSnipDir = new System.Windows.Forms.Button();
-            this.btnFilter = new System.Windows.Forms.Button();
-            this.directoryDDList = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
-            this.panelFilm.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.SuspendLayout();
+            ListeFilms = new System.Windows.Forms.ListBox();
+            panel1 = new System.Windows.Forms.Panel();
+            button1 = new System.Windows.Forms.Button();
+            btnRename = new System.Windows.Forms.Button();
+            btnDeleteFiche = new System.Windows.Forms.Button();
+            lblResume = new System.Windows.Forms.Label();
+            btnWatchMovie = new System.Windows.Forms.Button();
+            btnNext = new System.Windows.Forms.Button();
+            btnPrev = new System.Windows.Forms.Button();
+            panelFilm = new System.Windows.Forms.Panel();
+            lblPresse = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
+            lblDirector = new System.Windows.Forms.Label();
+            label8 = new System.Windows.Forms.Label();
+            lblGenres = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            lnklblFiche = new System.Windows.Forms.LinkLabel();
+            label4 = new System.Windows.Forms.Label();
+            lblDuree = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            lblYear = new System.Windows.Forms.Label();
+            lblTitle = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
+            pictureBox1 = new System.Windows.Forms.PictureBox();
+            label5 = new System.Windows.Forms.Label();
+            lblTotal = new System.Windows.Forms.Label();
+            lblIndex = new System.Windows.Forms.Label();
+            btnBrowse = new System.Windows.Forms.Button();
+            pictureBox2 = new System.Windows.Forms.PictureBox();
+            toolTip1 = new System.Windows.Forms.ToolTip(components);
+            btnAbout = new System.Windows.Forms.Button();
+            txtFiltre = new System.Windows.Forms.TextBox();
+            btnSnipDir = new System.Windows.Forms.Button();
+            btnFilter = new System.Windows.Forms.Button();
+            directoryDDList = new System.Windows.Forms.ComboBox();
+            panel1.SuspendLayout();
+            panelFilm.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            SuspendLayout();
             // 
             // ListeFilms
             // 
-            this.ListeFilms.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.ListeFilms.FormattingEnabled = true;
-            this.ListeFilms.HorizontalScrollbar = true;
-            this.ListeFilms.Location = new System.Drawing.Point(14, 79);
-            this.ListeFilms.Name = "ListeFilms";
-            this.ListeFilms.Size = new System.Drawing.Size(367, 589);
-            this.ListeFilms.TabIndex = 0;
-            this.ListeFilms.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ListeFilms_DrawItem);
-            this.ListeFilms.SelectedIndexChanged += new System.EventHandler(this.ListeFilms_SelectedIndexChanged);
+            ListeFilms.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            ListeFilms.FormattingEnabled = true;
+            ListeFilms.HorizontalScrollbar = true;
+            ListeFilms.Location = new System.Drawing.Point(16, 91);
+            ListeFilms.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            ListeFilms.Name = "ListeFilms";
+            ListeFilms.Size = new System.Drawing.Size(428, 679);
+            ListeFilms.TabIndex = 0;
+            ListeFilms.DrawItem += ListeFilms_DrawItem;
+            ListeFilms.SelectedIndexChanged += ListeFilms_SelectedIndexChanged;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.btnRename);
-            this.panel1.Controls.Add(this.btnDeleteFiche);
-            this.panel1.Controls.Add(this.lblResume);
-            this.panel1.Controls.Add(this.btnWatchMovie);
-            this.panel1.Controls.Add(this.btnNext);
-            this.panel1.Controls.Add(this.btnPrev);
-            this.panel1.Controls.Add(this.panelFilm);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.lblTotal);
-            this.panel1.Controls.Add(this.lblIndex);
-            this.panel1.Location = new System.Drawing.Point(387, 85);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(610, 602);
-            this.panel1.TabIndex = 1;
-            // 
-            // btnRename
-            // 
-            this.btnRename.Location = new System.Drawing.Point(327, 225);
-            this.btnRename.Name = "btnRename";
-            this.btnRename.Size = new System.Drawing.Size(122, 23);
-            this.btnRename.TabIndex = 12;
-            this.btnRename.Text = "Renommer le fichier";
-            this.toolTip1.SetToolTip(this.btnRename, "Renommer le fichier avec le titre du film");
-            this.btnRename.UseVisualStyleBackColor = true;
-            this.btnRename.Click += new System.EventHandler(this.buttonRename_Click);
-            // 
-            // btnDeleteFiche
-            // 
-            this.btnDeleteFiche.Location = new System.Drawing.Point(459, 3);
-            this.btnDeleteFiche.Name = "btnDeleteFiche";
-            this.btnDeleteFiche.Size = new System.Drawing.Size(21, 21);
-            this.btnDeleteFiche.TabIndex = 11;
-            this.btnDeleteFiche.Text = "!";
-            this.toolTip1.SetToolTip(this.btnDeleteFiche, "Effacer fiche");
-            this.btnDeleteFiche.UseVisualStyleBackColor = true;
-            this.btnDeleteFiche.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // lblResume
-            // 
-            this.lblResume.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblResume.Location = new System.Drawing.Point(14, 418);
-            this.lblResume.Name = "lblResume";
-            this.lblResume.Size = new System.Drawing.Size(456, 168);
-            this.lblResume.TabIndex = 10;
-            this.lblResume.Text = "label6";
-            // 
-            // btnWatchMovie
-            // 
-            this.btnWatchMovie.Location = new System.Drawing.Point(546, 374);
-            this.btnWatchMovie.Name = "btnWatchMovie";
-            this.btnWatchMovie.Size = new System.Drawing.Size(59, 36);
-            this.btnWatchMovie.TabIndex = 7;
-            this.btnWatchMovie.Text = "Regarder";
-            this.toolTip1.SetToolTip(this.btnWatchMovie, "Lancer le film");
-            this.btnWatchMovie.UseVisualStyleBackColor = true;
-            this.btnWatchMovie.Click += new System.EventHandler(this.btnWatchMovie_Click);
-            // 
-            // btnNext
-            // 
-            this.btnNext.Location = new System.Drawing.Point(584, 3);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(21, 21);
-            this.btnNext.TabIndex = 5;
-            this.btnNext.Text = ">";
-            this.toolTip1.SetToolTip(this.btnNext, "Fiche suivante");
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // btnPrev
-            // 
-            this.btnPrev.Enabled = false;
-            this.btnPrev.Location = new System.Drawing.Point(498, 3);
-            this.btnPrev.Name = "btnPrev";
-            this.btnPrev.Size = new System.Drawing.Size(21, 21);
-            this.btnPrev.TabIndex = 4;
-            this.btnPrev.Text = "<";
-            this.toolTip1.SetToolTip(this.btnPrev, "Fiche précédente");
-            this.btnPrev.UseVisualStyleBackColor = true;
-            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
-            // 
-            // panelFilm
-            // 
-            this.panelFilm.Controls.Add(this.lblPresse);
-            this.panelFilm.Controls.Add(this.label7);
-            this.panelFilm.Controls.Add(this.lblDirector);
-            this.panelFilm.Controls.Add(this.label8);
-            this.panelFilm.Controls.Add(this.lblGenres);
-            this.panelFilm.Controls.Add(this.label6);
-            this.panelFilm.Controls.Add(this.lnklblFiche);
-            this.panelFilm.Controls.Add(this.label4);
-            this.panelFilm.Controls.Add(this.lblDuree);
-            this.panelFilm.Controls.Add(this.label3);
-            this.panelFilm.Controls.Add(this.lblYear);
-            this.panelFilm.Controls.Add(this.lblTitle);
-            this.panelFilm.Controls.Add(this.label2);
-            this.panelFilm.Controls.Add(this.label1);
-            this.panelFilm.Location = new System.Drawing.Point(327, 30);
-            this.panelFilm.Name = "panelFilm";
-            this.panelFilm.Size = new System.Drawing.Size(278, 178);
-            this.panelFilm.TabIndex = 3;
-            // 
-            // lblPresse
-            // 
-            this.lblPresse.AutoSize = true;
-            this.lblPresse.Location = new System.Drawing.Point(98, 130);
-            this.lblPresse.Name = "lblPresse";
-            this.lblPresse.Size = new System.Drawing.Size(24, 13);
-            this.lblPresse.TabIndex = 13;
-            this.lblPresse.Text = "4/5";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(12, 130);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 13);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Note Presse";
-            // 
-            // lblDirector
-            // 
-            this.lblDirector.AutoSize = true;
-            this.lblDirector.Location = new System.Drawing.Point(98, 39);
-            this.lblDirector.Name = "lblDirector";
-            this.lblDirector.Size = new System.Drawing.Size(35, 13);
-            this.lblDirector.TabIndex = 11;
-            this.lblDirector.Text = "label3";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(12, 39);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(71, 13);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "Réalisateur";
-            // 
-            // lblGenres
-            // 
-            this.lblGenres.AutoSize = true;
-            this.lblGenres.Location = new System.Drawing.Point(98, 108);
-            this.lblGenres.Name = "lblGenres";
-            this.lblGenres.Size = new System.Drawing.Size(35, 13);
-            this.lblGenres.TabIndex = 9;
-            this.lblGenres.Text = "label7";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 108);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 13);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Genres";
-            // 
-            // lnklblFiche
-            // 
-            this.lnklblFiche.AutoSize = true;
-            this.lnklblFiche.Location = new System.Drawing.Point(98, 150);
-            this.lnklblFiche.Name = "lnklblFiche";
-            this.lnklblFiche.Size = new System.Drawing.Size(55, 13);
-            this.lnklblFiche.TabIndex = 7;
-            this.lnklblFiche.TabStop = true;
-            this.lnklblFiche.Text = "linkLabel1";
-            this.toolTip1.SetToolTip(this.lnklblFiche, "Fiche sur le site allociné");
-            this.lnklblFiche.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblFiche_LinkClicked);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 150);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Fiche";
-            // 
-            // lblDuree
-            // 
-            this.lblDuree.AutoSize = true;
-            this.lblDuree.Location = new System.Drawing.Point(98, 86);
-            this.lblDuree.Name = "lblDuree";
-            this.lblDuree.Size = new System.Drawing.Size(35, 13);
-            this.lblDuree.TabIndex = 5;
-            this.lblDuree.Text = "label4";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 86);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Durée";
-            // 
-            // lblYear
-            // 
-            this.lblYear.AutoSize = true;
-            this.lblYear.Location = new System.Drawing.Point(98, 61);
-            this.lblYear.Name = "lblYear";
-            this.lblYear.Size = new System.Drawing.Size(35, 13);
-            this.lblYear.TabIndex = 3;
-            this.lblYear.Text = "label4";
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(98, 15);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(35, 13);
-            this.lblTitle.TabIndex = 2;
-            this.lblTitle.Text = "label3";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 61);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Année";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Titre";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(12, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(300, 400);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(546, 7);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(12, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "/";
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(558, 7);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(19, 13);
-            this.lblTotal.TabIndex = 8;
-            this.lblTotal.Text = "99";
-            // 
-            // lblIndex
-            // 
-            this.lblIndex.AutoSize = true;
-            this.lblIndex.Location = new System.Drawing.Point(525, 7);
-            this.lblIndex.Name = "lblIndex";
-            this.lblIndex.Size = new System.Drawing.Size(19, 13);
-            this.lblIndex.TabIndex = 6;
-            this.lblIndex.Text = "99";
-            // 
-            // btnBrowse
-            // 
-            this.btnBrowse.Location = new System.Drawing.Point(202, 13);
-            this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(25, 21);
-            this.btnBrowse.TabIndex = 4;
-            this.btnBrowse.Text = "...";
-            this.toolTip1.SetToolTip(this.btnBrowse, "Ajouter un répertoire");
-            this.btnBrowse.UseVisualStyleBackColor = true;
-            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(815, 1);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(105, 35);
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox2, "Fiches fournies par Allociné");
-            this.pictureBox2.Click += new System.EventHandler(this.logoBox_Click);
-            // 
-            // btnAbout
-            // 
-            this.btnAbout.Location = new System.Drawing.Point(972, 2);
-            this.btnAbout.Name = "btnAbout";
-            this.btnAbout.Size = new System.Drawing.Size(20, 22);
-            this.btnAbout.TabIndex = 6;
-            this.btnAbout.Text = "?";
-            this.toolTip1.SetToolTip(this.btnAbout, "A propos");
-            this.btnAbout.UseVisualStyleBackColor = true;
-            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
-            // 
-            // txtFiltre
-            // 
-            this.txtFiltre.Location = new System.Drawing.Point(14, 43);
-            this.txtFiltre.Name = "txtFiltre";
-            this.txtFiltre.Size = new System.Drawing.Size(213, 20);
-            this.txtFiltre.TabIndex = 7;
-            this.toolTip1.SetToolTip(this.txtFiltre, "N\'afficher que les films contenant le texte entré");
-            this.txtFiltre.TextChanged += new System.EventHandler(this.txtFiltre_TextChanged);
-            this.txtFiltre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFiltre_KeyDown);
-            // 
-            // btnSnipDir
-            // 
-            this.btnSnipDir.Location = new System.Drawing.Point(233, 13);
-            this.btnSnipDir.Name = "btnSnipDir";
-            this.btnSnipDir.Size = new System.Drawing.Size(26, 21);
-            this.btnSnipDir.TabIndex = 11;
-            this.btnSnipDir.Text = "X";
-            this.toolTip1.SetToolTip(this.btnSnipDir, "Supprimer le répertoire");
-            this.btnSnipDir.UseVisualStyleBackColor = true;
-            this.btnSnipDir.Click += new System.EventHandler(this.btnSnipDir_Click);
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.Location = new System.Drawing.Point(244, 43);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(47, 20);
-            this.btnFilter.TabIndex = 8;
-            this.btnFilter.Text = "Filtrer";
-            this.btnFilter.UseVisualStyleBackColor = true;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
-            // 
-            // directoryDDList
-            // 
-            this.directoryDDList.FormattingEnabled = true;
-            this.directoryDDList.Location = new System.Drawing.Point(14, 13);
-            this.directoryDDList.Name = "directoryDDList";
-            this.directoryDDList.Size = new System.Drawing.Size(182, 21);
-            this.directoryDDList.TabIndex = 9;
-            this.directoryDDList.SelectedIndexChanged += new System.EventHandler(this.directoryDDList_SelectedIndexChanged);
+            panel1.Controls.Add(button1);
+            panel1.Controls.Add(btnRename);
+            panel1.Controls.Add(btnDeleteFiche);
+            panel1.Controls.Add(lblResume);
+            panel1.Controls.Add(btnWatchMovie);
+            panel1.Controls.Add(btnNext);
+            panel1.Controls.Add(btnPrev);
+            panel1.Controls.Add(panelFilm);
+            panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(label5);
+            panel1.Controls.Add(lblTotal);
+            panel1.Controls.Add(lblIndex);
+            panel1.Location = new System.Drawing.Point(451, 98);
+            panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(712, 695);
+            panel1.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(327, 255);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Effacer fichier";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btnDeleteMovie_Click);
+            button1.Location = new System.Drawing.Point(382, 294);
+            button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(142, 27);
+            button1.TabIndex = 13;
+            button1.Text = "Effacer fichier";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += btnDeleteMovie_Click;
+            // 
+            // btnRename
+            // 
+            btnRename.Location = new System.Drawing.Point(382, 260);
+            btnRename.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnRename.Name = "btnRename";
+            btnRename.Size = new System.Drawing.Size(142, 27);
+            btnRename.TabIndex = 12;
+            btnRename.Text = "Renommer le fichier";
+            toolTip1.SetToolTip(btnRename, "Renommer le fichier avec le titre du film");
+            btnRename.UseVisualStyleBackColor = true;
+            btnRename.Click += buttonRename_Click;
+            // 
+            // btnDeleteFiche
+            // 
+            btnDeleteFiche.Location = new System.Drawing.Point(536, 3);
+            btnDeleteFiche.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnDeleteFiche.Name = "btnDeleteFiche";
+            btnDeleteFiche.Size = new System.Drawing.Size(24, 24);
+            btnDeleteFiche.TabIndex = 11;
+            btnDeleteFiche.Text = "!";
+            toolTip1.SetToolTip(btnDeleteFiche, "Effacer fiche");
+            btnDeleteFiche.UseVisualStyleBackColor = true;
+            btnDeleteFiche.Click += btnDelete_Click;
+            // 
+            // lblResume
+            // 
+            lblResume.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            lblResume.Location = new System.Drawing.Point(16, 482);
+            lblResume.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblResume.Name = "lblResume";
+            lblResume.Size = new System.Drawing.Size(532, 194);
+            lblResume.TabIndex = 10;
+            lblResume.Text = "label6";
+            // 
+            // btnWatchMovie
+            // 
+            btnWatchMovie.Location = new System.Drawing.Point(637, 432);
+            btnWatchMovie.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnWatchMovie.Name = "btnWatchMovie";
+            btnWatchMovie.Size = new System.Drawing.Size(69, 42);
+            btnWatchMovie.TabIndex = 7;
+            btnWatchMovie.Text = "Regarder";
+            toolTip1.SetToolTip(btnWatchMovie, "Lancer le film");
+            btnWatchMovie.UseVisualStyleBackColor = true;
+            btnWatchMovie.Click += btnWatchMovie_Click;
+            // 
+            // btnNext
+            // 
+            btnNext.Location = new System.Drawing.Point(681, 3);
+            btnNext.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnNext.Name = "btnNext";
+            btnNext.Size = new System.Drawing.Size(24, 24);
+            btnNext.TabIndex = 5;
+            btnNext.Text = ">";
+            toolTip1.SetToolTip(btnNext, "Fiche suivante");
+            btnNext.UseVisualStyleBackColor = true;
+            btnNext.Click += btnNext_Click;
+            // 
+            // btnPrev
+            // 
+            btnPrev.Enabled = false;
+            btnPrev.Location = new System.Drawing.Point(581, 3);
+            btnPrev.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnPrev.Name = "btnPrev";
+            btnPrev.Size = new System.Drawing.Size(24, 24);
+            btnPrev.TabIndex = 4;
+            btnPrev.Text = "<";
+            toolTip1.SetToolTip(btnPrev, "Fiche précédente");
+            btnPrev.UseVisualStyleBackColor = true;
+            btnPrev.Click += btnPrev_Click;
+            // 
+            // panelFilm
+            // 
+            panelFilm.Controls.Add(lblPresse);
+            panelFilm.Controls.Add(label7);
+            panelFilm.Controls.Add(lblDirector);
+            panelFilm.Controls.Add(label8);
+            panelFilm.Controls.Add(lblGenres);
+            panelFilm.Controls.Add(label6);
+            panelFilm.Controls.Add(lnklblFiche);
+            panelFilm.Controls.Add(label4);
+            panelFilm.Controls.Add(lblDuree);
+            panelFilm.Controls.Add(label3);
+            panelFilm.Controls.Add(lblYear);
+            panelFilm.Controls.Add(lblTitle);
+            panelFilm.Controls.Add(label2);
+            panelFilm.Controls.Add(label1);
+            panelFilm.Location = new System.Drawing.Point(382, 35);
+            panelFilm.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            panelFilm.Name = "panelFilm";
+            panelFilm.Size = new System.Drawing.Size(324, 205);
+            panelFilm.TabIndex = 3;
+            // 
+            // lblPresse
+            // 
+            lblPresse.AutoSize = true;
+            lblPresse.Location = new System.Drawing.Point(114, 150);
+            lblPresse.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblPresse.Name = "lblPresse";
+            lblPresse.Size = new System.Drawing.Size(24, 15);
+            lblPresse.TabIndex = 13;
+            lblPresse.Text = "4/5";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label7.Location = new System.Drawing.Point(14, 150);
+            label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(76, 13);
+            label7.TabIndex = 12;
+            label7.Text = "Note Presse";
+            // 
+            // lblDirector
+            // 
+            lblDirector.AutoSize = true;
+            lblDirector.Location = new System.Drawing.Point(114, 45);
+            lblDirector.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblDirector.Name = "lblDirector";
+            lblDirector.Size = new System.Drawing.Size(38, 15);
+            lblDirector.TabIndex = 11;
+            lblDirector.Text = "label3";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label8.Location = new System.Drawing.Point(14, 45);
+            label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(71, 13);
+            label8.TabIndex = 10;
+            label8.Text = "Réalisateur";
+            // 
+            // lblGenres
+            // 
+            lblGenres.AutoSize = true;
+            lblGenres.Location = new System.Drawing.Point(114, 125);
+            lblGenres.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblGenres.Name = "lblGenres";
+            lblGenres.Size = new System.Drawing.Size(38, 15);
+            lblGenres.TabIndex = 9;
+            lblGenres.Text = "label7";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label6.Location = new System.Drawing.Point(14, 125);
+            label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(47, 13);
+            label6.TabIndex = 8;
+            label6.Text = "Genres";
+            // 
+            // lnklblFiche
+            // 
+            lnklblFiche.AutoSize = true;
+            lnklblFiche.Location = new System.Drawing.Point(114, 173);
+            lnklblFiche.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lnklblFiche.Name = "lnklblFiche";
+            lnklblFiche.Size = new System.Drawing.Size(60, 15);
+            lnklblFiche.TabIndex = 7;
+            lnklblFiche.TabStop = true;
+            lnklblFiche.Text = "linkLabel1";
+            toolTip1.SetToolTip(lnklblFiche, "Fiche sur le site allociné");
+            lnklblFiche.LinkClicked += lnklblFiche_LinkClicked;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label4.Location = new System.Drawing.Point(14, 173);
+            label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(38, 13);
+            label4.TabIndex = 6;
+            label4.Text = "Fiche";
+            // 
+            // lblDuree
+            // 
+            lblDuree.AutoSize = true;
+            lblDuree.Location = new System.Drawing.Point(114, 99);
+            lblDuree.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblDuree.Name = "lblDuree";
+            lblDuree.Size = new System.Drawing.Size(38, 15);
+            lblDuree.TabIndex = 5;
+            lblDuree.Text = "label4";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label3.Location = new System.Drawing.Point(14, 99);
+            label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(41, 13);
+            label3.TabIndex = 4;
+            label3.Text = "Durée";
+            // 
+            // lblYear
+            // 
+            lblYear.AutoSize = true;
+            lblYear.Location = new System.Drawing.Point(114, 70);
+            lblYear.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblYear.Name = "lblYear";
+            lblYear.Size = new System.Drawing.Size(38, 15);
+            lblYear.TabIndex = 3;
+            lblYear.Text = "label4";
+            // 
+            // lblTitle
+            // 
+            lblTitle.AutoSize = true;
+            lblTitle.Location = new System.Drawing.Point(114, 17);
+            lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new System.Drawing.Size(38, 15);
+            lblTitle.TabIndex = 2;
+            lblTitle.Text = "label3";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label2.Location = new System.Drawing.Point(14, 70);
+            label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(43, 13);
+            label2.TabIndex = 1;
+            label2.Text = "Année";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label1.Location = new System.Drawing.Point(14, 17);
+            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(33, 13);
+            label1.TabIndex = 0;
+            label1.Text = "Titre";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new System.Drawing.Point(14, 12);
+            pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new System.Drawing.Size(350, 462);
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(637, 8);
+            label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(12, 15);
+            label5.TabIndex = 9;
+            label5.Text = "/";
+            // 
+            // lblTotal
+            // 
+            lblTotal.AutoSize = true;
+            lblTotal.Location = new System.Drawing.Point(651, 8);
+            lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new System.Drawing.Size(19, 15);
+            lblTotal.TabIndex = 8;
+            lblTotal.Text = "99";
+            // 
+            // lblIndex
+            // 
+            lblIndex.AutoSize = true;
+            lblIndex.Location = new System.Drawing.Point(612, 8);
+            lblIndex.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblIndex.Name = "lblIndex";
+            lblIndex.Size = new System.Drawing.Size(19, 15);
+            lblIndex.TabIndex = 6;
+            lblIndex.Text = "99";
+            // 
+            // btnBrowse
+            // 
+            btnBrowse.Location = new System.Drawing.Point(236, 15);
+            btnBrowse.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnBrowse.Name = "btnBrowse";
+            btnBrowse.Size = new System.Drawing.Size(29, 24);
+            btnBrowse.TabIndex = 4;
+            btnBrowse.Text = "...";
+            toolTip1.SetToolTip(btnBrowse, "Ajouter un répertoire");
+            btnBrowse.UseVisualStyleBackColor = true;
+            btnBrowse.Click += btnBrowse_Click;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.TMDBLogo;
+            pictureBox2.Location = new System.Drawing.Point(1028, 1);
+            pictureBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new System.Drawing.Size(72, 72);
+            pictureBox2.TabIndex = 5;
+            pictureBox2.TabStop = false;
+            toolTip1.SetToolTip(pictureBox2, "Fiches fournies par Allociné");
+            pictureBox2.Click += logoBox_Click;
+            // 
+            // btnAbout
+            // 
+            btnAbout.Location = new System.Drawing.Point(1134, 2);
+            btnAbout.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnAbout.Name = "btnAbout";
+            btnAbout.Size = new System.Drawing.Size(23, 25);
+            btnAbout.TabIndex = 6;
+            btnAbout.Text = "?";
+            toolTip1.SetToolTip(btnAbout, "A propos");
+            btnAbout.UseVisualStyleBackColor = true;
+            btnAbout.Click += btnAbout_Click;
+            // 
+            // txtFiltre
+            // 
+            txtFiltre.Location = new System.Drawing.Point(16, 50);
+            txtFiltre.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtFiltre.Name = "txtFiltre";
+            txtFiltre.Size = new System.Drawing.Size(248, 23);
+            txtFiltre.TabIndex = 7;
+            toolTip1.SetToolTip(txtFiltre, "N'afficher que les films contenant le texte entré");
+            txtFiltre.TextChanged += txtFiltre_TextChanged;
+            txtFiltre.KeyDown += txtFiltre_KeyDown;
+            // 
+            // btnSnipDir
+            // 
+            btnSnipDir.Location = new System.Drawing.Point(272, 15);
+            btnSnipDir.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnSnipDir.Name = "btnSnipDir";
+            btnSnipDir.Size = new System.Drawing.Size(30, 24);
+            btnSnipDir.TabIndex = 11;
+            btnSnipDir.Text = "X";
+            toolTip1.SetToolTip(btnSnipDir, "Supprimer le répertoire");
+            btnSnipDir.UseVisualStyleBackColor = true;
+            btnSnipDir.Click += btnSnipDir_Click;
+            // 
+            // btnFilter
+            // 
+            btnFilter.Location = new System.Drawing.Point(285, 50);
+            btnFilter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnFilter.Name = "btnFilter";
+            btnFilter.Size = new System.Drawing.Size(55, 23);
+            btnFilter.TabIndex = 8;
+            btnFilter.Text = "Filtrer";
+            btnFilter.UseVisualStyleBackColor = true;
+            btnFilter.Click += btnFilter_Click;
+            // 
+            // directoryDDList
+            // 
+            directoryDDList.FormattingEnabled = true;
+            directoryDDList.Location = new System.Drawing.Point(16, 15);
+            directoryDDList.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            directoryDDList.Name = "directoryDDList";
+            directoryDDList.Size = new System.Drawing.Size(212, 23);
+            directoryDDList.TabIndex = 9;
+            directoryDDList.SelectedIndexChanged += directoryDDList_SelectedIndexChanged;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1005, 691);
-            this.Controls.Add(this.btnSnipDir);
-            this.Controls.Add(this.directoryDDList);
-            this.Controls.Add(this.btnFilter);
-            this.Controls.Add(this.txtFiltre);
-            this.Controls.Add(this.btnAbout);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.btnBrowse);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.ListeFilms);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "MainForm";
-            this.Text = "WhatsThisFilm?";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.Load += new System.EventHandler(this.MainForm_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panelFilm.ResumeLayout(false);
-            this.panelFilm.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoScroll = true;
+            ClientSize = new System.Drawing.Size(1172, 797);
+            Controls.Add(btnSnipDir);
+            Controls.Add(directoryDDList);
+            Controls.Add(btnFilter);
+            Controls.Add(txtFiltre);
+            Controls.Add(btnAbout);
+            Controls.Add(pictureBox2);
+            Controls.Add(btnBrowse);
+            Controls.Add(panel1);
+            Controls.Add(ListeFilms);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "MainForm";
+            Text = "WhatsThisFilm?";
+            FormClosing += MainForm_FormClosing;
+            Load += MainForm_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panelFilm.ResumeLayout(false);
+            panelFilm.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

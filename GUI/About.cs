@@ -36,5 +36,10 @@ namespace WhatsThisFilm
             var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
             lblVersion.Text = string.Format("version {0}.{1}.{2}", version.Major, version.Minor, version.Build);
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

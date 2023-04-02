@@ -19,7 +19,7 @@ namespace WhatsThisFilm
     public partial class MainForm : Form
     {
         private MovieCache _cache;
-
+        // private MovieDBClient theMDBClient;
         public MainForm(MovieCache cache)
         {
             InitializeComponent();
@@ -95,12 +95,12 @@ namespace WhatsThisFilm
             int currDirIndex = 0;
 
             if (directoryDDList.SelectedIndex != -1)
-            { 
+            {
                 currDirIndex = directoryDDList.SelectedIndex;
             }
             else
             {
-                 currDirIndex =_cache.searchPathList.IndexOf(_cache.searchPath);
+                currDirIndex = _cache.searchPathList.IndexOf(_cache.searchPath);
             }
 
             ListeFilms.DataSource = null;
@@ -131,7 +131,7 @@ namespace WhatsThisFilm
                     {
                         lblIndex.Text = currIndex.ToString();
 
-                        finfo = AlloClient.GetFromTitleLight(ListeFilms.SelectedItem.ToString(), currIndex);
+                        //ToDo finfo = theMDBClient.GetFromTitleLight(ListeFilms.SelectedItem.ToString(), currIndex);
 
                         if (finfo != null)
                         {
@@ -157,7 +157,7 @@ namespace WhatsThisFilm
                                 if (finfo.titre != null)
                                 {
                                     // Get the full info
-                                    finfo = AlloClient.GetFromTitle(ListeFilms.SelectedItem.ToString(), currIndex);
+                                    //ToDo finfo = theMDBClient.GetFromTitle(ListeFilms.SelectedItem.ToString(), currIndex);
                                 }
                             }
                         }
@@ -194,12 +194,12 @@ namespace WhatsThisFilm
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);                
+                MessageBox.Show(e.Message);
             }
             finally
             {
                 this.Cursor = Cursors.Arrow;
-                
+
             }
         }
 
@@ -394,7 +394,7 @@ namespace WhatsThisFilm
         private void buttonRename_Click(object sender, EventArgs e)
         {
             if (ListeFilms.SelectedIndex != -1)
-            { 
+            {
                 _cache.RenameFile(ListeFilms.SelectedItem.ToString());
                 RefreshList();
             }
