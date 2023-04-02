@@ -13,13 +13,14 @@ using System.Drawing.Imaging;
 using System.Text.RegularExpressions;
 using System.Globalization;
 using WhatsThisFilm.Service;
+using WhatsThisFilm.API;
 
 namespace WhatsThisFilm
 {
     public partial class MainForm : Form
     {
         private MovieCache _cache;
-        // private MovieDBClient theMDBClient;
+        private MovieDBClient theMDBClient;
         public MainForm(MovieCache cache)
         {
             InitializeComponent();
@@ -131,7 +132,7 @@ namespace WhatsThisFilm
                     {
                         lblIndex.Text = currIndex.ToString();
 
-                        //ToDo finfo = theMDBClient.GetFromTitleLight(ListeFilms.SelectedItem.ToString(), currIndex);
+                        finfo = theMDBClient.GetFromTitleLight(ListeFilms.SelectedItem.ToString(), currIndex);
 
                         if (finfo != null)
                         {
@@ -157,7 +158,7 @@ namespace WhatsThisFilm
                                 if (finfo.titre != null)
                                 {
                                     // Get the full info
-                                    //ToDo finfo = theMDBClient.GetFromTitle(ListeFilms.SelectedItem.ToString(), currIndex);
+                                    finfo = theMDBClient.GetFromTitle(ListeFilms.SelectedItem.ToString(), currIndex);
                                 }
                             }
                         }
