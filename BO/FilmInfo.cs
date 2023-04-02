@@ -39,7 +39,7 @@ namespace WhatsThisFilm
 
         public DateTime jaquetteTime { get; set; }
 
-        public double presse { get; set; }
+        public string popularity { get; set; }
 
         public string StringVal()
         {
@@ -56,7 +56,7 @@ namespace WhatsThisFilm
             this.duree = "-";
             this.link = "-";
             this.genre = "-";
-            this.presse = 0;
+            this.popularity = "-";
         }
     }
 

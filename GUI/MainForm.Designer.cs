@@ -102,7 +102,7 @@ namespace WhatsThisFilm
             panel1.Location = new System.Drawing.Point(451, 98);
             panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(712, 695);
+            panel1.Size = new System.Drawing.Size(1117, 695);
             panel1.TabIndex = 1;
             // 
             // button1
@@ -206,7 +206,7 @@ namespace WhatsThisFilm
             panelFilm.Location = new System.Drawing.Point(382, 35);
             panelFilm.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             panelFilm.Name = "panelFilm";
-            panelFilm.Size = new System.Drawing.Size(324, 205);
+            panelFilm.Size = new System.Drawing.Size(722, 205);
             panelFilm.TabIndex = 3;
             // 
             // lblPresse
@@ -226,9 +226,10 @@ namespace WhatsThisFilm
             label7.Location = new System.Drawing.Point(14, 150);
             label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(76, 13);
+            label7.Size = new System.Drawing.Size(64, 13);
             label7.TabIndex = 12;
-            label7.Text = "Note Presse";
+            label7.Text = "Popularité";
+            label7.Click += label7_Click;
             // 
             // lblDirector
             // 
@@ -413,7 +414,7 @@ namespace WhatsThisFilm
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.TMDBLogo;
-            pictureBox2.Location = new System.Drawing.Point(1028, 1);
+            pictureBox2.Location = new System.Drawing.Point(1439, 11);
             pictureBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new System.Drawing.Size(72, 72);
@@ -424,7 +425,7 @@ namespace WhatsThisFilm
             // 
             // btnAbout
             // 
-            btnAbout.Location = new System.Drawing.Point(1134, 2);
+            btnAbout.Location = new System.Drawing.Point(1545, 12);
             btnAbout.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnAbout.Name = "btnAbout";
             btnAbout.Size = new System.Drawing.Size(23, 25);
@@ -483,7 +484,7 @@ namespace WhatsThisFilm
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new System.Drawing.Size(1172, 797);
+            ClientSize = new System.Drawing.Size(1581, 797);
             Controls.Add(btnSnipDir);
             Controls.Add(directoryDDList);
             Controls.Add(btnFilter);

@@ -231,3 +231,5 @@ $RECYCLE.BIN/
 *.lnk
 /.vs/WhatsThisFilm
 /.vs/ProjectEvaluation
+#create and store the bearer token in this file
+/themdbbearertoken.txt

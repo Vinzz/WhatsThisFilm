@@ -25,6 +25,7 @@ namespace WhatsThisFilm
         {
             InitializeComponent();
             _cache = cache;
+            theMDBClient = new MovieDBClient();
 
             string currFilm = string.Empty;
 
@@ -183,7 +184,7 @@ namespace WhatsThisFilm
                     lblTotal.Text = finfo.totalInSearch.ToString();
                     lnklblFiche.Text = finfo.link;
                     lblGenres.Text = TitleManipulator.AddSpacesToSentence(finfo.genre);
-                    lblPresse.Text = finfo.presse.ToString("0.0") + "/5";
+                    lblPresse.Text = finfo.popularity;
                 }
                 else
                 {
@@ -404,6 +405,11 @@ namespace WhatsThisFilm
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.Location = new Point(0, 0);
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
