@@ -130,7 +130,7 @@ namespace WhatsThisFilm
             // 
             // btnDeleteFiche
             // 
-            btnDeleteFiche.Location = new System.Drawing.Point(536, 3);
+            btnDeleteFiche.Location = new System.Drawing.Point(667, 3);
             btnDeleteFiche.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnDeleteFiche.Name = "btnDeleteFiche";
             btnDeleteFiche.Size = new System.Drawing.Size(24, 24);
@@ -152,7 +152,7 @@ namespace WhatsThisFilm
             // 
             // btnWatchMovie
             // 
-            btnWatchMovie.Location = new System.Drawing.Point(637, 432);
+            btnWatchMovie.Location = new System.Drawing.Point(767, 432);
             btnWatchMovie.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnWatchMovie.Name = "btnWatchMovie";
             btnWatchMovie.Size = new System.Drawing.Size(69, 42);
@@ -164,7 +164,7 @@ namespace WhatsThisFilm
             // 
             // btnNext
             // 
-            btnNext.Location = new System.Drawing.Point(681, 3);
+            btnNext.Location = new System.Drawing.Point(812, 3);
             btnNext.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnNext.Name = "btnNext";
             btnNext.Size = new System.Drawing.Size(24, 24);
@@ -177,7 +177,7 @@ namespace WhatsThisFilm
             // btnPrev
             // 
             btnPrev.Enabled = false;
-            btnPrev.Location = new System.Drawing.Point(581, 3);
+            btnPrev.Location = new System.Drawing.Point(712, 3);
             btnPrev.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnPrev.Name = "btnPrev";
             btnPrev.Size = new System.Drawing.Size(24, 24);
@@ -372,7 +372,7 @@ namespace WhatsThisFilm
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(637, 8);
+            label5.Location = new System.Drawing.Point(768, 8);
             label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(12, 15);
@@ -382,7 +382,7 @@ namespace WhatsThisFilm
             // lblTotal
             // 
             lblTotal.AutoSize = true;
-            lblTotal.Location = new System.Drawing.Point(651, 8);
+            lblTotal.Location = new System.Drawing.Point(782, 8);
             lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new System.Drawing.Size(19, 15);
@@ -392,7 +392,7 @@ namespace WhatsThisFilm
             // lblIndex
             // 
             lblIndex.AutoSize = true;
-            lblIndex.Location = new System.Drawing.Point(612, 8);
+            lblIndex.Location = new System.Drawing.Point(743, 8);
             lblIndex.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lblIndex.Name = "lblIndex";
             lblIndex.Size = new System.Drawing.Size(19, 15);
