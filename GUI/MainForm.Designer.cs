@@ -36,10 +36,12 @@ namespace WhatsThisFilm
             btnRename = new System.Windows.Forms.Button();
             btnDeleteFiche = new System.Windows.Forms.Button();
             lblResume = new System.Windows.Forms.Label();
+            btnAbout = new System.Windows.Forms.Button();
             btnWatchMovie = new System.Windows.Forms.Button();
             btnNext = new System.Windows.Forms.Button();
             btnPrev = new System.Windows.Forms.Button();
             panelFilm = new System.Windows.Forms.Panel();
+            pictureBox2 = new System.Windows.Forms.PictureBox();
             lnklblAllocine = new System.Windows.Forms.LinkLabel();
             label9 = new System.Windows.Forms.Label();
             lblPresse = new System.Windows.Forms.Label();
@@ -61,17 +63,15 @@ namespace WhatsThisFilm
             lblTotal = new System.Windows.Forms.Label();
             lblIndex = new System.Windows.Forms.Label();
             btnBrowse = new System.Windows.Forms.Button();
-            pictureBox2 = new System.Windows.Forms.PictureBox();
             toolTip1 = new System.Windows.Forms.ToolTip(components);
-            btnAbout = new System.Windows.Forms.Button();
             txtFiltre = new System.Windows.Forms.TextBox();
             btnSnipDir = new System.Windows.Forms.Button();
             btnFilter = new System.Windows.Forms.Button();
             directoryDDList = new System.Windows.Forms.ComboBox();
             panel1.SuspendLayout();
             panelFilm.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // ListeFilms
@@ -82,7 +82,7 @@ namespace WhatsThisFilm
             ListeFilms.Location = new System.Drawing.Point(16, 91);
             ListeFilms.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             ListeFilms.Name = "ListeFilms";
-            ListeFilms.Size = new System.Drawing.Size(428, 679);
+            ListeFilms.Size = new System.Drawing.Size(428, 549);
             ListeFilms.TabIndex = 0;
             ListeFilms.DrawItem += ListeFilms_DrawItem;
             ListeFilms.SelectedIndexChanged += ListeFilms_SelectedIndexChanged;
@@ -93,6 +93,7 @@ namespace WhatsThisFilm
             panel1.Controls.Add(btnRename);
             panel1.Controls.Add(btnDeleteFiche);
             panel1.Controls.Add(lblResume);
+            panel1.Controls.Add(btnAbout);
             panel1.Controls.Add(btnWatchMovie);
             panel1.Controls.Add(btnNext);
             panel1.Controls.Add(btnPrev);
@@ -101,15 +102,16 @@ namespace WhatsThisFilm
             panel1.Controls.Add(label5);
             panel1.Controls.Add(lblTotal);
             panel1.Controls.Add(lblIndex);
-            panel1.Location = new System.Drawing.Point(451, 98);
+            panel1.Location = new System.Drawing.Point(451, 12);
             panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(1117, 695);
+            panel1.Size = new System.Drawing.Size(775, 628);
             panel1.TabIndex = 1;
+            panel1.Paint += panel1_Paint;
             // 
             // button1
             // 
-            button1.Location = new System.Drawing.Point(382, 325);
+            button1.Location = new System.Drawing.Point(318, 314);
             button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             button1.Name = "button1";
             button1.Size = new System.Drawing.Size(142, 27);
@@ -120,7 +122,7 @@ namespace WhatsThisFilm
             // 
             // btnRename
             // 
-            btnRename.Location = new System.Drawing.Point(382, 291);
+            btnRename.Location = new System.Drawing.Point(308, 281);
             btnRename.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnRename.Name = "btnRename";
             btnRename.Size = new System.Drawing.Size(142, 27);
@@ -145,16 +147,28 @@ namespace WhatsThisFilm
             // lblResume
             // 
             lblResume.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            lblResume.Location = new System.Drawing.Point(16, 482);
+            lblResume.Location = new System.Drawing.Point(16, 424);
             lblResume.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lblResume.Name = "lblResume";
-            lblResume.Size = new System.Drawing.Size(532, 194);
+            lblResume.Size = new System.Drawing.Size(532, 187);
             lblResume.TabIndex = 10;
             lblResume.Text = "label6";
             // 
+            // btnAbout
+            // 
+            btnAbout.Location = new System.Drawing.Point(741, 3);
+            btnAbout.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnAbout.Name = "btnAbout";
+            btnAbout.Size = new System.Drawing.Size(23, 25);
+            btnAbout.TabIndex = 6;
+            btnAbout.Text = "?";
+            toolTip1.SetToolTip(btnAbout, "A propos");
+            btnAbout.UseVisualStyleBackColor = true;
+            btnAbout.Click += btnAbout_Click;
+            // 
             // btnWatchMovie
             // 
-            btnWatchMovie.Location = new System.Drawing.Point(637, 432);
+            btnWatchMovie.Location = new System.Drawing.Point(556, 424);
             btnWatchMovie.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnWatchMovie.Name = "btnWatchMovie";
             btnWatchMovie.Size = new System.Drawing.Size(69, 42);
@@ -191,6 +205,7 @@ namespace WhatsThisFilm
             // 
             // panelFilm
             // 
+            panelFilm.Controls.Add(pictureBox2);
             panelFilm.Controls.Add(lnklblAllocine);
             panelFilm.Controls.Add(label9);
             panelFilm.Controls.Add(lblPresse);
@@ -207,11 +222,23 @@ namespace WhatsThisFilm
             panelFilm.Controls.Add(lblTitle);
             panelFilm.Controls.Add(label2);
             panelFilm.Controls.Add(label1);
-            panelFilm.Location = new System.Drawing.Point(382, 35);
+            panelFilm.Location = new System.Drawing.Point(308, 33);
             panelFilm.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             panelFilm.Name = "panelFilm";
-            panelFilm.Size = new System.Drawing.Size(722, 226);
+            panelFilm.Size = new System.Drawing.Size(661, 228);
             panelFilm.TabIndex = 3;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.TMDBLogo;
+            pictureBox2.Location = new System.Drawing.Point(373, 70);
+            pictureBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new System.Drawing.Size(72, 72);
+            pictureBox2.TabIndex = 5;
+            pictureBox2.TabStop = false;
+            toolTip1.SetToolTip(pictureBox2, "Fiches fournies par Allociné");
+            pictureBox2.Click += logoBox_Click;
             // 
             // lnklblAllocine
             // 
@@ -393,7 +420,7 @@ namespace WhatsThisFilm
             pictureBox1.Location = new System.Drawing.Point(14, 12);
             pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new System.Drawing.Size(350, 462);
+            pictureBox1.Size = new System.Drawing.Size(286, 396);
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
@@ -438,30 +465,6 @@ namespace WhatsThisFilm
             toolTip1.SetToolTip(btnBrowse, "Ajouter un répertoire");
             btnBrowse.UseVisualStyleBackColor = true;
             btnBrowse.Click += btnBrowse_Click;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = Properties.Resources.TMDBLogo;
-            pictureBox2.Location = new System.Drawing.Point(1439, 11);
-            pictureBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new System.Drawing.Size(72, 72);
-            pictureBox2.TabIndex = 5;
-            pictureBox2.TabStop = false;
-            toolTip1.SetToolTip(pictureBox2, "Fiches fournies par Allociné");
-            pictureBox2.Click += logoBox_Click;
-            // 
-            // btnAbout
-            // 
-            btnAbout.Location = new System.Drawing.Point(1545, 12);
-            btnAbout.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            btnAbout.Name = "btnAbout";
-            btnAbout.Size = new System.Drawing.Size(23, 25);
-            btnAbout.TabIndex = 6;
-            btnAbout.Text = "?";
-            toolTip1.SetToolTip(btnAbout, "A propos");
-            btnAbout.UseVisualStyleBackColor = true;
-            btnAbout.Click += btnAbout_Click;
             // 
             // txtFiltre
             // 
@@ -512,13 +515,11 @@ namespace WhatsThisFilm
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new System.Drawing.Size(1364, 749);
+            ClientSize = new System.Drawing.Size(1213, 633);
             Controls.Add(btnSnipDir);
             Controls.Add(directoryDDList);
             Controls.Add(btnFilter);
             Controls.Add(txtFiltre);
-            Controls.Add(btnAbout);
-            Controls.Add(pictureBox2);
             Controls.Add(btnBrowse);
             Controls.Add(panel1);
             Controls.Add(ListeFilms);
@@ -533,8 +534,8 @@ namespace WhatsThisFilm
             panel1.PerformLayout();
             panelFilm.ResumeLayout(false);
             panelFilm.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }

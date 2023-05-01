@@ -408,9 +408,15 @@ namespace WhatsThisFilm
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.Location = new Point(0, 0);
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
