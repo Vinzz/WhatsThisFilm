@@ -75,15 +75,10 @@ namespace WhatsThisFilm.API
 
             ans.realisateur = credits.CrewMembers.Single(x => x.Job == "Director").Name;
 
-    
             ans.duree = TimeSpan.FromMinutes(movie.Runtime).ToString();
  
 
-
             ans.totalInSearch = currCount;
-
-
-
 
 
             return ans;

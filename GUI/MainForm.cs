@@ -15,6 +15,7 @@ using System.Globalization;
 using WhatsThisFilm.Service;
 using WhatsThisFilm.API;
 using System.Security.Policy;
+using static System.Windows.Forms.LinkLabel;
 
 namespace WhatsThisFilm
 {
@@ -278,7 +279,7 @@ namespace WhatsThisFilm
 
         private void btnWatchMovie_Click(object sender, EventArgs e)
         {
-            Process.Start(_cache.GetFullPath(ListeFilms.SelectedItem.ToString()));
+            Process.Start(new ProcessStartInfo { FileName = _cache.GetFullPath(ListeFilms.SelectedItem.ToString()), UseShellExecute = true });
         }
 
         private void btnDeleteMovie_Click(object sender, EventArgs e)

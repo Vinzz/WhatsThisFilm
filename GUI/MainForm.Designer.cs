@@ -122,7 +122,7 @@ namespace WhatsThisFilm
             // 
             // btnRename
             // 
-            btnRename.Location = new System.Drawing.Point(308, 281);
+            btnRename.Location = new System.Drawing.Point(318, 281);
             btnRename.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnRename.Name = "btnRename";
             btnRename.Size = new System.Drawing.Size(142, 27);
