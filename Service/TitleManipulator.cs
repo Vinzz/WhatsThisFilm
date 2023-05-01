@@ -40,6 +40,7 @@ namespace WhatsThisFilm
                                         @"truefrench.*" + "|" +
                                         @" TS .*" + "|" +
                                         @"MULTi.*" + "|" +
+                                        @"wawacity.*" + "|" +
                                         @"RIP.*" + "|" +
                                         @"CAM.*" + "|" +
                                         @"AC3.*" + "|" +
