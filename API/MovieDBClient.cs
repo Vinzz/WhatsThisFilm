@@ -14,7 +14,7 @@ using System.Net;
 
 namespace WhatsThisFilm.API
 {
-    internal class MovieDBClient
+    public class MovieDBClient
     {
         private string bearertoken = string.Empty;
         private IApiMovieRequest movieApi = null;
@@ -24,14 +24,14 @@ namespace WhatsThisFilm.API
         private static MovieInfo currMovie;
         private static int currCount;
 
-        internal MovieDBClient()
+        public MovieDBClient()
         {
             bearertoken = File.ReadAllText("themdbbearertoken.txt");
             MovieDbFactory.RegisterSettings(bearertoken);
             movieApi = MovieDbFactory.Create<IApiMovieRequest>().Value;
         }
 
-        internal FilmInfo GetFromTitle(string movietitle, int index)
+        public FilmInfo GetFromTitle(string movietitle, int index)
         {
             FilmInfo ans = new FilmInfo();
             string hexedTitle = TitleManipulator.HexIt(movietitle);
@@ -115,7 +115,7 @@ namespace WhatsThisFilm.API
             return ans;
         }
 
-        internal FilmInfo GetFromTitleLight(string movietitle, int index)
+        public FilmInfo GetFromTitleLight(string movietitle, int index)
         {
             FilmInfo ans = new FilmInfo();
             string hexedTitle = TitleManipulator.HexIt(movietitle);

@@ -1,9 +1,9 @@
 WhatsThisFilm?
 ===========
 
-Small GUI to expose allocine api informations for local video files.
+Small GUI to expose ~~allocine~~ The Movie DB api informations for local video files.
 
 http://yocto.projects.free.fr/Programs/WhatsThisFilm/WhatsThisFilm.html
 
-Refences another github project that shall be cloned alongside:
-https://github.com/gromez/allocine-api
+So as to access the TMDB api, one has to create an account, and request a bearer token, which shall be written in a ./themdbbearertoken.txt 
+
