@@ -41,10 +41,13 @@ namespace WhatsThisFilm.API
 
             //get full movie info
             Movie movie = null;
+            MovieCredit credits = null;
             Task.Run(async () =>
             {
                 ApiQueryResponse<Movie> response = await movieApi.FindByIdAsync(currMovie.Id, "fr-FR");
+                ApiQueryResponse<MovieCredit> responsecredits = await movieApi.GetCreditsAsync(currMovie.Id, "fr-FR");
                 movie = response.Item;
+                credits = responsecredits.Item;
             }).GetAwaiter().GetResult();
 
             ans.titre = currMovie.Title;
@@ -70,47 +73,18 @@ namespace WhatsThisFilm.API
                 ans.jaquetteTime = DateTime.Now;
             }
 
+            ans.realisateur = credits.CrewMembers.Single(x => x.Job == "Director").Name;
 
-            //if (currMovie.CastingShort != null)
-            //{
-            //    ans.realisateur = currMovie.CastingShort.Directors;
-            //}
+    
+            ans.duree = TimeSpan.FromMinutes(movie.Runtime).ToString();
+ 
 
-            //if (currMovie.Statistics != null && currMovie.Statistics.PressRating != null)
-            //{
-            //    ans.presse = (double)currMovie.Statistics.PressRating;
-            //}
 
-            //ans.totalInSearch = currCount;
-            //if (currMovie.LinkList != null && currMovie.LinkList.Count > 0)
-            //    ans.link = currMovie.LinkList[0].Href;
+            ans.totalInSearch = currCount;
 
-            //if (currMovie.Runtime != null)
-            //{
-            //    ans.duree = TimeSpan.FromSeconds(int.Parse(currMovie.Runtime)).ToString();
-            //}
 
-            //ans.genre = "";
-            //if (currMovie.GenreList != null)
-            //{
-            //    foreach (var genre in currMovie.GenreList)
-            //    {
-            //        ans.genre += genre.Value + ", ";
-            //    }
-            //    ans.genre = ans.genre.TrimEnd(' ');
-            //    ans.genre = ans.genre.TrimEnd(',');
-            //}
-            //if (currMovie.SynopsisShort != null)
-            //{
-            //    ans.synopsis = currMovie.SynopsisShort.Replace("<br />", "\n").Replace("<br/>", "\n");
-            //    ans.synopsis = noHTMLreg.Replace(ans.synopsis, "");
-            //}
 
-            //if (currMovie.Poster != null)
-            //{
-            //    ans.jaquette = BitmapFromWeb(currMovie.Poster.Href);
-            //    ans.jaquetteTime = DateTime.Now;
-            //}
+
 
             return ans;
         }
